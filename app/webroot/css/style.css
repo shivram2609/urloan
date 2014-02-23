@@ -1,0 +1,59 @@
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {content: '';content: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+a{text-decoration:none;}
+input[type="submit"]{cursor:pointer;}
+img{border:none;}
+*,*:after,*:before{box-sizing:border-box;-o-box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+/************* reset css over ****************/
+body{font-family:arial;}
+.borderNone{border:none !important;}
+.firstchild{padding-left:0px !important;}
+.lastchild{padding-right:0px !important;}
+.left{float:left;}
+.right{float:right;}
+.width100{width:100%;}
+.marginRight{margin-right:0px !important;}
+.marginBottom{margin-bottom:0px !important;}
+.backgroundcolor{background:none !important;}
+.clear{clear:both;}
+/********** header part css here**************/
+.wrapper{margin:auto;width:910px;}
+.urloan_logo{float:left;width:171px;height:148px;margin:20px 0 0;}
+.header_right{float:right;margin:50px 0 0;}
+.apply_now_main{float:right;width:200px;text-align:center;}
+.apply_now_main b{font-size:13px;font-weight:bold;color:#626262;}
+.apply_now{float:right;margin:6px 0 0;}
+/********** header part css over here *******/
+/**** main navigation css here ****/
+.main_navigation{margin:0 0 20px;}
+.main_navigation,.main_navigation ul{float:left;width:100%;}
+.main_navigation ul li, .main_navigation ul li a{float:left;}
+/**** main navigation css over here  ****/
+/***** login css here ******/
+.login_form_main{padding:10px;background:#f0f0f0;border:1px solid #dadada;border-radius:6px;-o-border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;width:400px;margin:auto;clear:both;}
+h1{font-size:34px;color:#252D31;margin:0 0 15px;}
+.login_form_row,.signup_form_indiv{margin:0 0 15px;}
+.login_form_row label,.signup_form_indiv label{width:100%;float:left;color:#566573;font-size:14px;margin:0 0 5px;font-weight:bold;}
+.login_form_row input,.signup_form_indiv input{border:2px solid #BDC3C7;border-radius:6px;-o-border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;height:34px;color:#34495E;font-size:13px;line-height:32px;padding:5px;width:100%;font-weight:bold;}
+.login_form_row input[type="submit"]{background:#0E4181;border:2px solid #0E4181;color:#fff;font-weight:bold;}
+/***** login css over here ****/
+/**** footer css here ****/
+footer{background:#BCBCBD;border-top:3px solid #000;color:#000;padding:35px 25px 40px;margin:20px 0 25px;font-size:13px;}
+.footer_navigation{text-align:center;}
+.footer_navigation li{display:inline;}
+.footer_navigation li a{font-size:13px;color:#000;margin:0 5px;}
+.copyright{text-align:center;font-size:13px;color:#000;margin:7px 0 20px;}
+.copyright a{color:#000;}
+.fine-print p{font-size:9px;color:#575757;line-height:22px;}
+footer a:hover{text-decoration:underline;}
+/*****foote css over here ***/
+/*** signup css here ****/
+.signup_form_indiv{width:446px;}
+.signup_form_indiv input[type="submit"]{width:auto;background:#0E4181;color:#fff;border:2px solid #0e4181;font-weight:bold;padding:0 11px;float:right;}
+/**** signup css  over here ****/
