@@ -150,9 +150,9 @@ $(document).ready(function(){
 				email		: true
 		
 			},
-			'data[User][password]' : {
+			'data[User][newpassword]' : {
 				required	:	true,
-				minlength	:	5,
+				minlength	:	8,
 				maxlength	:	15
 			},
 			'data[Userdetail][first_name]' : {
@@ -166,8 +166,8 @@ $(document).ready(function(){
 			},
 			'data[User][confirmpassword]' : {
 				required	:	true,
-				equalTo		:	'#UserPassword',
-				minlength	:	5,
+				equalTo		:	'#UserNewpassword',
+				minlength	:	8,
 				maxlength	:	15
 			}
 		},
@@ -176,9 +176,9 @@ $(document).ready(function(){
 				required	: 'Please enter username.',
 				email		: 'Please enetr valid email.'
 			},
-			'data[User][password]' : {
+			'data[User][newpassword]' : {
 				required	:	'Please enter password.',
-				minlength	:	'Password length must be 5 character long.',
+				minlength	:	'Password length must be 8 character long.',
 				maxlength	:	'Password length can not exceed 15 characters.'
 			},
 			'data[Userdetail][first_name]' : {
@@ -190,7 +190,7 @@ $(document).ready(function(){
 			'data[User][confirmpassword]' : {
 				required	:	'Please re-type new password.',
 				equalTo		:	'New and Re-type password do not match.',
-				minlength	:	'Password cannot be less than 5 characters.',
+				minlength	:	'Password cannot be less than 8 characters.',
 				maxlength	:	'Password cannot be more than 15 characters.'
 			}
 		}

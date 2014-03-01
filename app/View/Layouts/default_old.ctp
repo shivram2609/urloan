@@ -14,7 +14,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css(array('cake.generic',"style_custom"));
-		echo $this->Html->script(array('jquery.min',"functionality"));
+		echo $this->Html->script(array('jquery.min','jquery.validate',"functionality"));
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');

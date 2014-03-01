@@ -15,7 +15,7 @@
 		<div class="signup_form_row">
 			<div class="signup_form_indiv left">
 				<label for="UserPassword">Password</label>
-				<?php echo $this->Form->input("password",array("type"=>"password","maxlength"=>"15","div"=>false,"label"=>false,"class"=>"password_input")); ?>
+				<?php echo $this->Form->input("newpassword",array("type"=>"password","maxlength"=>"15","div"=>false,"label"=>false,"class"=>"password_input")); ?>
 			</div>
 			<div class="signup_form_indiv right">
 				<label>Confirm Password</label>

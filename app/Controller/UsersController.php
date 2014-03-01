@@ -150,7 +150,7 @@ class UsersController extends AppController {
 			
 			if ($errFlag == 2) {
 				$data = $this->request->data;
-				$data['User']['password'] = $this->Auth->password($data['User']['password']);
+				$data['User']['password'] = $this->Auth->password($data['User']['newpassword']);
 				$data['User']['confirmtoken'] = $this->Auth->password($data['User']['password']."--".$data['User']['password']);
 				$this->User->save($data,array("validate"=>false));
 				$data['Userdetail']['user_id'] = $this->User->getLastInsertId();
