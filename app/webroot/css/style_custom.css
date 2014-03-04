@@ -1,4 +1,4 @@
 div.tab{float: left; border: 1px solid; width: 100%; background: #003D4C; color: #EEE; font-weight: bold; font-size: 16px; cursor: pointer;}
-div.tab1,.tab2,.tab3,.tab4,.tab5{float: left; border: 1px solid; width: 100%; background: #003D4C; color: #EEE; font-weight: bold; font-size: 16px; cursor: pointer;}
+div.tab1,.tab2,.tab3,.tab4,.tab5,.tab0{float: left; border: 1px solid; width: 100%; background: #003D4C; color: #EEE; font-weight: bold; font-size: 16px; cursor: pointer;}
 .hide {display:none;}
 label.error{color: #E51E1E; padding: 5px 0 !important; font-size: 12px !important; font-weight: normal !important;}

@@ -23,26 +23,6 @@ $(document).ready(function(){
 	/* to validate first step of application  */
 	$.fn.step1 = function(){
 		var err_count_step1 = 0;
-		/* check valid price */
-		var price = $("#ApplicationAmount").val();
-		if (!$(this).checkprice(price)) {
-			++err_count_step1;
-			$("#ApplicationAmount_error").html("Please enter valid amount.");
-			$("#ApplicationAmount_error").show();
-			$("#ApplicationAmount_error").focus();
-		} else {
-			$("#ApplicationAmount_error").hide();
-		}
-		/* check valid price end here */
-		
-		if($("#ApplicationPurpose").val() == '') {
-			++err_count_step1;
-			$("#ApplicationPurpose_error").html("Please enter loan purpose.");
-			$("#ApplicationPurpose_error").show();
-			$("#ApplicationPurpose_error").focus();
-		} else {
-			$("#ApplicationPurpose_error").hide();
-		}
 		
 		if($("#UserdetailFirstName").val() == '') {
 			++err_count_step1;
@@ -81,7 +61,7 @@ $(document).ready(function(){
 	
 	$.fn.step2 = function(){
 		var err_count_step2 = 0;
-		if(!$(this).checkprice($("#UserdetailWorkPhone").val())) {
+		if(!$(this).checkphone($("#UserdetailWorkPhone").val())) {
 			++err_count_step2;
 			$("#UserdetailWorkPhone_error").html("Please enter valid work phone.");
 			$("#UserdetailWorkPhone_error").show();
@@ -89,7 +69,8 @@ $(document).ready(function(){
 		} else {
 			$("#UserdetailWorkPhone_error").hide();
 		}
-		if(!$(this).checkprice($("#UserdetailHomePhone").val())) {
+		
+		if(!$(this).checkphone($("#UserdetailHomePhone").val())) {
 			++err_count_step2;
 			$("#UserdetailHomePhone_error").html("Please enter valid home phone.");
 			$("#UserdetailHomePhone_error").show();
@@ -97,7 +78,7 @@ $(document).ready(function(){
 		} else {
 			$("#UserdetailHomePhone_error").hide();
 		}
-		if(!$(this).checkprice($("#UserdetailMobilePhone").val())) {
+		if(!$(this).checkphone($("#UserdetailMobilePhone").val())) {
 			++err_count_step2;
 			$("#UserdetailMobilePhone_error").html("Please enter valid mobile phone.");
 			$("#UserdetailMobilePhone_error").show();
@@ -124,6 +105,55 @@ $(document).ready(function(){
 		return reg.test(phone);
 	}
 	
+	$.fn.step0 = function(){
+		var err_count_step0 = 0;
+		/* check valid price */
+		var price = $("#ApplicationAmount").val();
+		if (!$(this).checkprice(price)) {
+			++err_count_step0;
+			$("#ApplicationAmount_error").html("Please enter valid amount.");
+			$("#ApplicationAmount_error").show();
+			$("#ApplicationAmount_error").focus();
+		} else {
+			$("#ApplicationAmount_error").hide();
+		}
+		/* check valid price end here */
+		
+		if ($("#ApplicationProvinceId").val() == '') {
+			++err_count_step0;
+			$("#ApplicationProvinceId_error").html("Please select a province.");
+			$("#ApplicationProvinceId_error").show();
+			$("#ApplicationProvinceId_error").focus();
+		} else {
+			$("#ApplicationProvinceId_error").hide();
+		}
+		
+		if ($("#ApplicationPurpose").val() == '') {
+			++err_count_step0;
+			$("#ApplicationPurpose_error").html("Please select a purpose of loan.");
+			$("#ApplicationPurpose_error").show();
+			$("#ApplicationPurpose_error").focus();
+		} else {
+			$("#ApplicationPurpose_error").hide();
+		}
+		
+		
+		
+		if (err_count_step0 == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	$("#step0").click(function(){
+		if ($(this).step0()) {
+			$("div.tab0").addClass("tab");
+			$("#pers_cont").slideDown("1000");
+			$("#qualify_cont").slideUp("1000");
+		}
+	});
+	
 	$("#step1").click(function(){
 		if ($(this).step1()) {
 			$("div.tab1").addClass("tab");
@@ -131,6 +161,7 @@ $(document).ready(function(){
 			$("#contact_cont").slideDown("1000");
 		}
 	});
+	
 	$("#step2").click(function(){
 		if ($(this).step2()) {
 			$("div.tab2").addClass("tab");
@@ -139,9 +170,91 @@ $(document).ready(function(){
 		}
 	});
 	
+	$.fn.step3 = function(){
+		var err_count_step3 = 0;
+		if ($("#UserdetailStreetAddress").val() == '') {
+			++err_count_step3;
+			$("#UserdetailStreetAddress_error").html("Please enter address.");
+			$("#UserdetailStreetAddress_error").show();
+			$("#UserdetailStreetAddress_error").focus();
+		} else {
+			$("#UserdetailStreetAddress_error").hide();
+		}
+		
+		if ($("#UserdetailCity").val() == '') {
+			++err_count_step3;
+			$("#UserdetailCity_error").html("Please enter city.");
+			$("#UserdetailCity_error").show();
+			$("#UserdetailCity_error").focus();
+		} else {
+			$("#UserdetailCity_error").hide();
+		}
+		
+		if ($("#UserdetailPostalCode").val() == '') {
+			++err_count_step3;
+			$("#UserdetailPostalCode_error").html("Please enter postal code.");
+			$("#UserdetailPostalCode_error").show();
+			$("#UserdetailPostalCode_error").focus();
+		} else {
+			$("#UserdetailPostalCode_error").hide();
+		}
+		if (err_count_step3 == 0) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
+	$("#step3").click(function(){
+		if($(this).step3()) {
+			$("div.tab3").addClass("tab");
+			$("#address_cont").slideUp("1000");
+			$("#emp_cont").slideDown("1000");
+		}
+	});
+	
+	$("#step4,#step4skip").click(function(){
+		$("div.tab4").addClass("tab");
+		$("#emp_cont").slideUp("1000");
+		$("#finan_cont").slideDown("1000");
+	});
+	$("#step5,#step5skip").click(function(){
+		$("div.tab5").addClass("tab");
+		$("#finan_cont").slideUp("1000");
+		$("#terms_cont").slideDown("1000");
+	});
+	
+	$.fn.laststep = function(){
+		var term_count = 0;
+		if($("#term1:checked").val() == 1 && $("#term2:checked").val() == 1) {
+		} else {
+			if ($("#term1:checked").val() != 1) {
+				$("#term1_error").html("Please accept terms.");
+				$("#term1_error").show();
+			} else {
+				$("#term1_error").hide();
+			}
+			if ($("#term2:checked").val() != 1) {
+				$("#term2_error").html("Please accept terms.");
+				$("#term2_error").show();
+			} else {
+				$("#term2_error").hide();
+			}
+			++term_count;
+		}
+		
+		if(term_count > 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 	
 	
-	
+	$("#ApplicationApplyForm").submit(function(){
+		return $(this).laststep();
+	});
 	
 	$("#UserSignupForm").validate({
 		rules:{
@@ -260,4 +373,48 @@ $(document).ready(function(){
 			}
 		}
 	});
+	
+	$("#filename0,#filename1,#filename2,#filename3").change(function(){
+		if($(this).val() != '' ){
+			$("#frmsbmt").removeAttr("disabled");
+		}
+	});
+	
+	$("#ApplicationDocumentAddDocumentsForm").validate({
+		rules:{
+			'data[filename][0]' : {
+				required 	:	false,
+				accept		:	'jpeg|jpg|png|gif|pdf|doc'
+			},
+			'data[filename][1]' : {
+				required 	:	false,
+				accept		:	'jpeg|jpg|png|gif|pdf|doc'
+			},
+			'data[filename][2]' : {
+				required 	:	false,
+				accept		:	'jpeg|jpg|png|gif|pdf|doc'
+			},
+			'data[filename][3]' : {
+				required 	:	false,
+				accept		:	'jpeg|jpg|png|gif|pdf|doc'
+			}
+			
+		},
+		messages:{
+			'data[filename][0]' : {
+				accept		:	'Please upload jpeg,gif,png,pdf or doc file only'
+			},
+			'data[filename][1]' : {
+				accept		:	'Please upload jpeg,gif,png,pdf or doc file only'
+			},
+			'data[filename][2]' : {
+				accept		:	'Please upload jpeg,gif,png,pdf or doc file only'
+			},
+			'data[filename][3]' : {
+				accept		:	'Please upload jpeg,gif,png,pdf or doc file only'
+			}
+			
+		}
+	});
+	
 });
