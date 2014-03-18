@@ -38,6 +38,7 @@
 	Router::connect('/apply-loan', array('controller' => 'applications', 'action' => 'apply'));
 	Router::connect('/addfiles/*', array('controller' => 'applications', 'action' => 'addDocuments'));
 	Router::connect('/confirmation/*', array('controller' => 'applications', 'action' => 'confirmapp'));
+	Router::connect('/add-details/*', array('controller' => 'applications', 'action' => 'adddetails'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */

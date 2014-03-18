@@ -9,7 +9,7 @@ $(document).ready(function(){
 			$(this).removeAttr("required");
 		}
 	});
-	$("#ApplicationApplyForm").find("input,select,checkbox").each(function(){
+	$("#ApplicationApplyForm,#ApplicationAdddetailsForm").find("input,select,checkbox").each(function(){
 		if($(this).hasClass("validate")){
 			$(this).after('<label id = "'+$(this).attr("id")+'_error" class="hide error"></label>');
 		}
@@ -146,15 +146,23 @@ $(document).ready(function(){
 		}
 	}
 	
+	$("#ApplicationApplyForm").submit(function(){
+		//alert($(this).step0());
+		if($("#ApplicationApply").val()) {
+			return true;
+		} else {
+			return ($(this).step0());
+		}
+		
+	});
+	/*
 	$("#step0").click(function(){
 		if ($(this).step0()) {
-			$("div.tab0").addClass("tab");
-			$("#pers_cont").slideDown("1000");
-			$("#qualify_cont").slideUp("1000");
+			$("#ApplicationApplyForm").submit();
 		}
 	});
-	
-	$("#step1").click(function(){
+	*/
+	$("#step1").click(function(){ 
 		if ($(this).step1()) {
 			$("div.tab1").addClass("tab");
 			$("#pers_cont").slideUp("1000");
@@ -252,7 +260,7 @@ $(document).ready(function(){
 	}
 	
 	
-	$("#ApplicationApplyForm").submit(function(){
+	$("#ApplicationAdddetailsForm").submit(function(){
 		return $(this).laststep();
 	});
 	
@@ -308,9 +316,6 @@ $(document).ready(function(){
 			}
 		}
 	});	
-	
-	
-	
 	
 	$("#UserLoginForm").validate({
 		rules:{
