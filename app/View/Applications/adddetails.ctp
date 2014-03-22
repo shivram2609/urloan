@@ -6,12 +6,23 @@
 	echo $this->Form->input('Userdetail.first_name',array("class"=>"validate"));
 	echo $this->Form->input('Userdetail.last_name',array("class"=>"validate"));
 	echo $this->Form->input('Userdetail.gender',array("options"=>array("Male"=>"Male","Female"=>"Female")));
-	echo $this->Form->input('referredby');
-	echo $this->Form->input('referenceno',array("label"=>"Reference Person Phone:"));
-	echo $this->Form->input("dependents",array("options"=>array("0"=>"0","1"=>"1","2"=>"2","3"=>"3","4"=>"4","5+"=>"5+"),"empty"=>"Select Value","label"=>"No of dependants:"));
-	echo $this->Form->input("contacttime",array("options"=>array("morning"=>"Morning","afternoon"=>"Afternoon","evening"=>"Evening"),"empty"=>"Select Value","label"=>"Best time to contact you:","class"=>"validate"));
-	echo $this->Form->input("carstatus",array("options"=>array("yes"=>"Yes","no"=>"No"),"empty"=>"Select Value","label"=>"Do you own a car?:"));
-	echo $this->Form->input("maritalstatus",array("options"=>array("Single"=>"Single","Married"=>"Married","Divorced"=>"Divorced","Widowed"=>"Widowed","Separated"=>"Separated","Common Law"=>"Common Law"),"empty"=>"Select Value","label"=>"Marital Status:"));
+	?>
+	<div id="ref_agent">
+	<?php
+	echo $this->Form->input("agent_id",array("options"=>$agents,"empty"=>"Select an Agent","label"=>"Referred By"));
+	?>
+	</div>
+	<div id="ref_other" class="hide">
+	<?php
+	echo $this->Form->input('referredby',array("label"=>"Referred By","disabled"=>true));
+	echo $this->Form->input('referenceno',array("label"=>"Reference Person Phone:","disabled"=>true));
+	?>
+	</div>
+	<?php
+	echo $this->Form->input("dependents",array("options"=>array("0"=>"0","1"=>"1","2"=>"2","3"=>"3","4"=>"4","5+"=>"5+"),"empty"=>"Select Value","class"=>"validate","label"=>"Number of dependents:"));
+	echo $this->Form->input("contacttime",array("options"=>array("morning"=>"Morning","afternoon"=>"Afternoon","evening"=>"Evening",'anytime'=>"Anytime"),"empty"=>"Select Value","label"=>"Best time to contact you:","class"=>"validate"));
+	echo $this->Form->input("carstatus",array("options"=>array("yes"=>"Yes","no"=>"No"),"empty"=>"Select Value","label"=>"Do you own a car?:","class"=>"validate"));
+	echo $this->Form->input("maritalstatus",array("options"=>array("Single"=>"Single","Married"=>"Married","Divorced"=>"Divorced","Widowed"=>"Widowed","Separated"=>"Separated","Common Law"=>"Common Law"),"empty"=>"Select Value","label"=>"Marital Status:","class"=>"validate"));
 	?>
 	<input type="button" value="Save & Continue" id="step1"/>
 </div>

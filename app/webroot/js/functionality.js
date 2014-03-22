@@ -105,6 +105,18 @@ $(document).ready(function(){
 		return reg.test(phone);
 	}
 	
+	$("#ApplicationAgentId").live("change",function(){
+		if ($(this).val() == 'other') {
+			$("#ref_other").slideDown('1000');
+			$("#ApplicationReferredby").removeAttr("disabled");
+			$("#ApplicationReferenceno").removeAttr("disabled");
+		} else {
+			$("#ref_other").slideUp('1000');
+			$("#ApplicationReferredby").attr("disabled",true);
+			$("#ApplicationReferenceno").attr("disabled",true);
+		}
+	});
+	
 	$.fn.step0 = function(){
 		var err_count_step0 = 0;
 		/* check valid price */

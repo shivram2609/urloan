@@ -22,6 +22,9 @@ class ApplicationsController extends AppController {
 	}
 	
 	function apply() {
+		$this->loadModel("Userdetail");
+		$data_arr = array();
+		$data_arr = $this->Userdetail->find("first",array("conditions"=>array("Userdetail.user_id"=>$this->Session->read("Auth.User.id"))));
 		if($this->request->is('post')){
 			if(isset($this->data['Userdetail']['birth_date']['year'])) {
 				$this->loadModel("Evaluate");
@@ -30,8 +33,17 @@ class ApplicationsController extends AppController {
 				$enter_age = strtotime($this->data['Userdetail']['birth_date']['year']."-".$this->data['Userdetail']['birth_date']['month']."-".$this->data['Userdetail']['birth_date']['day']);
 				$pr_arr = explode(",",$evaluates[0]['Evaluate']['provinces']);
 				if(in_array($this->data['Application']['province_id'],$pr_arr) && $enter_age >= $age) {
+					$this->loadModel("Fraud");
+					$fraud['Fraud']['user_id'] = $this->Session->read("Auth.User.id");
+					$fraud['Fraud']['data'] = serialize($this->data);
+					$this->Fraud->save($fraud);
 					$this->Session->write("raw",$this->data);
 				} else {
+					$this->loadModel("Fraud");
+					$fraud['Fraud']['user_id'] = $this->Session->read("Auth.User.id");
+					$fraud['Fraud']['data'] = serialize($this->data);
+					$fraud['Fraud']['attempts'] = 'Reject';
+					$this->Fraud->save($fraud);
 					$this->Session->delete("raw");
 					$this->Session->setFlash("You are not qualified to apply for application.");
 				}
@@ -51,10 +63,11 @@ class ApplicationsController extends AppController {
 		for($i=6;$i<=36;$i++) {
 			$terms[$i] = $i;
 		}
-		$this->loadModel("Userdetail");
-		$data_arr = array();
-		$data_arr = $this->Userdetail->find("first",array("conditions"=>array("Userdetail.user_id"=>$this->Session->read("Auth.User.id"))));
-		$this->set(compact("terms"));
+		$loanamount = array();
+		for($j=1000;$j<=15000;$j += 500) {
+			$loanamount[$j] = $j;
+		}
+		$this->set(compact("terms","loanamount"));
 		$this->data = $data_arr;
 		$this->loadModel("Province");
 		$provinces = $this->Province->find("list",array("fields"=>array("Province.id","Province.name")));
@@ -65,6 +78,9 @@ class ApplicationsController extends AppController {
 		$this->loadModel("Userdetail");
 		$data_arr = array();
 		$data_arr = $this->Userdetail->find("first",array("conditions"=>array("Userdetail.user_id"=>$this->Session->read("Auth.User.id"))));
+		$this->loadModel("Agent");
+		$agents = $this->Agent->find("list",array("conditions"=>array("status"=>"1"),"fields"=>array("id","name")));
+		$agents = array_merge($agents,array("other"=>"Other"));
 		if(isset($this->data) && !empty($this->data) && !empty($id)){
 			$data = $this->data;
 			$data['Application']['user_id'] = $this->Session->read("Auth.User.id");
@@ -77,6 +93,7 @@ class ApplicationsController extends AppController {
 			$datas = $this->Application->find("first",array("conditions"=>array("Application.id"=>$id)));
 			$this->data = $datas;
 		}
+		$this->set(compact("agents"));
 	}
 	
 	function addDocuments($applicationid = null) {
