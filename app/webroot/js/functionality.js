@@ -50,6 +50,33 @@ $(document).ready(function(){
 		} else {
 			$("#ApplicationContacttime_error").hide();
 		}
+		if($("#ApplicationDependents").val() == '') {
+			++err_count_step1;
+			$("#ApplicationDependents_error").html("Please select number of dependants.");
+			$("#ApplicationDependents_error").show();
+			$("#ApplicationDependents_error").focus();
+		} else {
+			$("#ApplicationDependents_error").hide();
+		}
+		if($("#ApplicationCarstatus").val() == '') {
+			++err_count_step1;
+			$("#ApplicationCarstatus_error").html("Please select car status.");
+			$("#ApplicationCarstatus_error").show();
+			$("#ApplicationCarstatus_error").focus();
+		} else {
+			$("#ApplicationCarstatus_error").hide();
+		}
+		if($("#ApplicationMaritalstatus").val() == '') {
+			++err_count_step1;
+			$("#ApplicationMaritalstatus_error").html("Please select marital status.");
+			$("#ApplicationMaritalstatus_error").show();
+			$("#ApplicationMaritalstatus_error").focus();
+		} else {
+			$("#ApplicationMaritalstatus_error").hide();
+		}
+		
+		
+		
 		if (err_count_step1 == 0) {
 			return true;
 		} else {

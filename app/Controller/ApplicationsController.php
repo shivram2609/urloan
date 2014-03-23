@@ -80,7 +80,7 @@ class ApplicationsController extends AppController {
 		$data_arr = $this->Userdetail->find("first",array("conditions"=>array("Userdetail.user_id"=>$this->Session->read("Auth.User.id"))));
 		$this->loadModel("Agent");
 		$agents = $this->Agent->find("list",array("conditions"=>array("status"=>"1"),"fields"=>array("id","name")));
-		$agents = array_merge($agents,array("other"=>"Other"));
+		$agents["other"] = "Other";
 		if(isset($this->data) && !empty($this->data) && !empty($id)){
 			$data = $this->data;
 			$data['Application']['user_id'] = $this->Session->read("Auth.User.id");
