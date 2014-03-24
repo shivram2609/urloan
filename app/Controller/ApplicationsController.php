@@ -84,6 +84,25 @@ class ApplicationsController extends AppController {
 		if(isset($this->data) && !empty($this->data) && !empty($id)){
 			$data = $this->data;
 			$data['Application']['user_id'] = $this->Session->read("Auth.User.id");
+			$data['Application']['province_id'] = $data['Application']['province'];
+			if(is_array($data['Application']['assetsline'])) {
+				$data['Application']['assetsline'] = serialize($data['Application']['assetsline']);
+			}
+			if(is_array($data['Application']['assets'])) {
+				$data['Application']['assets'] = serialize($data['Application']['assets']);
+			}
+			if(is_array($data['Application']['liabilityline'])) {
+				$data['Application']['liabilityline'] = serialize($data['Application']['liabilityline']);
+			}
+			if(is_array($data['Application']['liabilities'])) {
+				$data['Application']['liabilities'] = serialize($data['Application']['liabilities']);
+			}
+			if(is_array($data['Application']['expenselist'])) {
+				$data['Application']['expenselist'] = serialize($data['Application']['expenselist']);
+			}
+			if(is_array($data['Application']['expenses'])) {
+				$data['Application']['expenses'] = serialize($data['Application']['expenses']);
+			}
 			$this->Application->id = $id; 
 			$this->Application->save($data,array("validates"=>false));
 			$this->Userdetail->id = $data_arr['Userdetail']['id'];
@@ -94,6 +113,9 @@ class ApplicationsController extends AppController {
 			$this->data = $datas;
 		}
 		$this->set(compact("agents"));
+		$this->loadModel('Province');
+		$provinces = $this->Province->find("list",array("fields"=>array("Province.id","Province.name")));
+		$this->set(compact("provinces"));
 	}
 	
 	function addDocuments($applicationid = null) {

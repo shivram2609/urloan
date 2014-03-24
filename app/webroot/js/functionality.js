@@ -219,31 +219,85 @@ $(document).ready(function(){
 	
 	$.fn.step3 = function(){
 		var err_count_step3 = 0;
-		if ($("#UserdetailStreetAddress").val() == '') {
+		if ($("#ApplicationStreetNumber").val() == '') {
 			++err_count_step3;
-			$("#UserdetailStreetAddress_error").html("Please enter address.");
-			$("#UserdetailStreetAddress_error").show();
-			$("#UserdetailStreetAddress_error").focus();
+			$("#ApplicationStreetNumber_error").html("Please enter street number.");
+			$("#ApplicationStreetNumber_error").show();
+			$("#ApplicationStreetNumber_error").focus();
 		} else {
-			$("#UserdetailStreetAddress_error").hide();
+			$("#ApplicationStreetNumber_error").hide();
+		}
+		if ($("#ApplicationStreetName").val() == '') {
+			++err_count_step3;
+			$("#ApplicationStreetName_error").html("Please enter street name.");
+			$("#ApplicationStreetName_error").show();
+			$("#ApplicationStreetName_error").focus();
+		} else {
+			$("#ApplicationStreetName_error").hide();
+		}
+		if ($("#ApplicationStreetType").val() == '') {
+			++err_count_step3;
+			$("#ApplicationStreetType_error").html("Please enter street type.");
+			$("#ApplicationStreetType_error").show();
+			$("#ApplicationStreetType_error").focus();
+		} else {
+			$("#ApplicationStreetType_error").hide();
 		}
 		
-		if ($("#UserdetailCity").val() == '') {
+		if ($("#ApplicationCity").val() == '') {
 			++err_count_step3;
-			$("#UserdetailCity_error").html("Please enter city.");
-			$("#UserdetailCity_error").show();
-			$("#UserdetailCity_error").focus();
+			$("#ApplicationCity_error").html("Please enter city.");
+			$("#ApplicationCity_error").show();
+			$("#ApplicationCity_error").focus();
 		} else {
-			$("#UserdetailCity_error").hide();
+			$("#ApplicationCity_error").hide();
 		}
 		
-		if ($("#UserdetailPostalCode").val() == '') {
+		if ($("#ApplicationPostalCode").val() == '') {
 			++err_count_step3;
-			$("#UserdetailPostalCode_error").html("Please enter postal code.");
-			$("#UserdetailPostalCode_error").show();
-			$("#UserdetailPostalCode_error").focus();
+			$("#ApplicationPostalCode_error").html("Please enter postal code.");
+			$("#ApplicationPostalCode_error").show();
+			$("#ApplicationPostalCode_error").focus();
 		} else {
-			$("#UserdetailPostalCode_error").hide();
+			$("#ApplicationPostalCode_error").hide();
+		}
+		if ($("#ApplicationTimeCurrAddress").val() == '') {
+			++err_count_step3;
+			$("#ApplicationTimeCurrAddress_error").html("Please enter time at current address.");
+			$("#ApplicationTimeCurrAddress_error").show();
+			$("#ApplicationTimeCurrAddress_error").focus();
+		} else {
+			$("#ApplicationTimeCurrAddress_error").hide();
+		}
+		if ($("#ApplicationProvince").val() == '') {
+			++err_count_step3;
+			$("#ApplicationProvince_error").html("Please enter province.");
+			$("#ApplicationProvince_error").show();
+			$("#ApplicationProvince_error").focus();
+		} else {
+			$("#ApplicationProvince_error").hide();
+		}
+		if ($("#ApplicationResidentStatus").val() == '') {
+			++err_count_step3;
+			$("#ApplicationResidentStatus_error").html("Please select residential status.");
+			$("#ApplicationResidentStatus_error").show();
+			$("#ApplicationResidentStatus_error").focus();
+		} else {
+			$("#ApplicationResidentStatus_error").hide();
+		}
+		
+		if ($("#ApplicationRent").val() == '') {
+			++err_count_step3;
+			$("#ApplicationRent_error").html("Please enter rent.");
+			$("#ApplicationRent_error").show();
+			$("#ApplicationRent_error").focus();
+		} else if(parseFloat($("#ApplicationRent").val())+0 != $("#ApplicationRent").val()  ) {
+			++err_count_step3;
+			$("#ApplicationRent_error").html("Please enter valid amount.");
+			$("#ApplicationRent_error").show();
+			$("#ApplicationRent_error").focus();
+		} else {
+			$("#ApplicationRent_error").hide();
 		}
 		if (err_count_step3 == 0) {
 			return true;
@@ -461,4 +515,22 @@ $(document).ready(function(){
 		}
 	});
 	
+	$(".addasset").live("click",function(){
+		var id = $(this).attr("id").split("_");
+		var str = '<br/><label for="assetsline'+id[1]+'">List your assets by name (please separate by line): </label><input id="assetsline'+id[1]+'" class="assets" type="text" placeholder="Home, Car, Jewelry, Furniture, etc." name="data[Application][assetsline]['+id[1]+']"><label for="ApplicationAssets">Assets (by dollar value, separate by same line): </label><input id="ApplicationAssets'+id[1]+'" type="text" maxlength="255" cass="assets" name="data[Application][assets]['+id[1]+']">';
+		$(this).before(str);
+		$(this).attr("id","asset_"+(parseInt(id[1])+1));
+	});
+	$(".addliability").live("click",function(){
+		var id = $(this).attr("id").split("_");
+		var str = '<label for="liabilityline'+id[1]+'">List your liabilities by name (please separate by line) </label><input id="liabilityline'+id[1]+'" type="text" placeholder="Payday loans, Visa, Mastercard, Auto Loan, etc." name="data[Application][liabilityline]['+id[1]+']"><label for="liabilities'+id[1]+'">Liabilities (by dollar value, separate by same line): </label><input id="liabilities'+id[1]+'" type="text" name="data[Application][liabilities]['+id[1]+']">';
+		$(this).before(str);
+		$(this).attr("id","liability_"+(parseInt(id[1])+1));
+	});
+	$(".addexpense").live("click",function(){
+		var id = $(this).attr("id").split("_");
+		var str = '<label for="ApplicationExpenselist'+id[1]+'">List Monthly Expenses by name (please separate by line): </label><input id="ApplicationExpenselist'+id[1]+'" type="text" maxlength="255" placeholder="Rent, Transportation, Gas, Insurance, Cell phone, etc." name="data[Application][expenselist]['+id[1]+']"><label for="ApplicationExpenses'+id[1]+'">Monthly Expenses (by dollar value, separate by same line): </label><input id="ApplicationExpenses'+id[1]+'" type="text" maxlength="200" name="data[Application][expenses]['+id[1]+']">';
+		$(this).before(str);
+		$(this).attr("id","addexpense_"+(parseInt(id[1])+1));
+	});
 });
