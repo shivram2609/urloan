@@ -11,6 +11,7 @@ $(document).ready(function(){
 	});
 	$("#ApplicationApplyForm,#ApplicationAdddetailsForm").find("input,select,checkbox").each(function(){
 		if($(this).hasClass("validate")){
+			$(this).prev("label").html($(this).prev("label").html() + "<em style='color:red;'>*<em>");
 			$(this).after('<label id = "'+$(this).attr("id")+'_error" class="hide error"></label>');
 		}
 	});

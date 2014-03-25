@@ -1,3 +1,10 @@
+<?php echo $this->Html->css("jquery.ui"); ?>
+<?php echo $this->Html->script("jquery.ui"); ?>
+ <script>
+$(function() {
+$( "#UserdetailBirthDate" ).datepicker({dateFormat: 'yy-mm-dd',maxDate: new Date(1995, 1 - 1, 1)});
+});
+</script>
 <div class="userdetails form">
 <?php echo $this->Form->create('Userdetail'); ?>
 	<fieldset>
@@ -8,7 +15,7 @@
 		echo $this->Form->input('first_name');
 		echo $this->Form->input('last_name');
 		echo $this->Form->input('gender',array("options"=>array("Male"=>"Male","Female"=>"Female")));
-		echo $this->Form->input('birth_date');
+		echo $this->Form->input('birth_date',array("type"=>"text"));
 		echo $this->Form->input('work_phone');
 		echo $this->Form->input('work_phone_extension');
 		echo $this->Form->input('home_phone');

@@ -15,7 +15,7 @@ $cakeDescription = 'Urloan';
 
 		echo $this->Html->css(array('cake.generic',"style_custom"));
 		echo $this->Html->script(array('jquery.min','jquery.validate',"functionality"));
-
+		echo $this->Html->script("jquery.form");
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');

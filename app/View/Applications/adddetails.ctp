@@ -14,17 +14,10 @@ $( "#ApplicationEmptime" ).datepicker();
 	echo $this->Form->input('Userdetail.last_name',array("class"=>"validate"));
 	echo $this->Form->input('Userdetail.gender',array("options"=>array("Male"=>"Male","Female"=>"Female")));
 	?>
-	<div id="ref_agent">
 	<?php
-	echo $this->Form->input("agent_id",array("options"=>$agents,"empty"=>"Select an Agent","label"=>"Referred By"));
+	echo $this->Form->input('referredby',array("label"=>"How did you hear about us?"));
 	?>
-	</div>
-	<div id="ref_other" class="hide">
-	<?php
-	echo $this->Form->input('referredby',array("label"=>"Referred By","disabled"=>true));
-	echo $this->Form->input('referenceno',array("label"=>"Reference Person Phone:","disabled"=>true));
-	?>
-	</div>
+	
 	<?php
 	echo $this->Form->input("dependents",array("options"=>array("0"=>"0","1"=>"1","2"=>"2","3"=>"3","4"=>"4","5+"=>"5+"),"empty"=>"Select Value","class"=>"validate","label"=>"Number of dependants:"));
 	echo $this->Form->input("contacttime",array("options"=>array("morning"=>"Morning","afternoon"=>"Afternoon","evening"=>"Evening",'anytime'=>"Anytime"),"empty"=>"Select Value","label"=>"Best time to contact you:","class"=>"validate"));
@@ -65,7 +58,7 @@ $( "#ApplicationEmptime" ).datepicker();
 	<div id="emp_cont" class="info hide">
 		<?php echo $this->Form->input("company",array("type"=>"text")); ?>
 		<?php echo $this->Form->input("position",array("type"=>"text")); ?>
-		<?php echo $this->Form->input("empmainline",array("type"=>"text","label"=>"Employer Main Line")); ?>
+		<?php echo $this->Form->input("empmainline",array("type"=>"text","label"=>"Employer main phone line")); ?>
 		<?php echo $this->Form->input("emptime",array("type"=>"text","label"=>"Start date at current employer:")); ?>
 		<?php echo $this->Form->input("pay",array("type"=>"text","label"=>"Net Monthly pay:")); ?>
 		<?php echo $this->Form->input("payfreq",array("options"=>array("Weekly"=>"Weekly","Bi-Weekly"=>"Bi-Weekly","Semi-Monthy"=>"Semi-Monthy","Monthly"=>"Monthly"),"empty"=>"Select value","label"=>"Pay frequency ")); ?>

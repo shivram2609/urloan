@@ -30,7 +30,7 @@ class ApplicationsController extends AppController {
 				$this->loadModel("Evaluate");
 				$evaluates = $this->Evaluate->find("all");
 				$age = strtotime($evaluates[0]['Evaluate']['min_age']);
-				$enter_age = strtotime($this->data['Userdetail']['birth_date']['year']."-".$this->data['Userdetail']['birth_date']['month']."-".$this->data['Userdetail']['birth_date']['day']);
+				$enter_age = strtotime($this->data['Userdetail']['birth_date']);
 				$pr_arr = explode(",",$evaluates[0]['Evaluate']['provinces']);
 				if(in_array($this->data['Application']['province_id'],$pr_arr) && $enter_age >= $age) {
 					$this->loadModel("Fraud");
@@ -107,7 +107,7 @@ class ApplicationsController extends AppController {
 			$this->Application->save($data,array("validates"=>false));
 			$this->Userdetail->id = $data_arr['Userdetail']['id'];
 			$this->Userdetail->save($data,array("validates"=>false));
-			$this->redirect("/addfiles/".$id);
+			//$this->redirect("/addfiles/".$id);
 		} elseif(!empty($id)) {
 			$datas = $this->Application->find("first",array("conditions"=>array("Application.id"=>$id)));
 			$this->data = $datas;
