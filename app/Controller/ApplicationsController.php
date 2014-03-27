@@ -32,7 +32,7 @@ class ApplicationsController extends AppController {
 				$age = strtotime($evaluates[0]['Evaluate']['min_age']);
 				$enter_age = strtotime($this->data['Userdetail']['birth_date']);
 				$pr_arr = explode(",",$evaluates[0]['Evaluate']['provinces']);
-				if(in_array($this->data['Application']['province_id'],$pr_arr) && $enter_age >= $age) {
+				if(in_array($this->data['Userdetail']['province_id'],$pr_arr) && $enter_age >= $age) {
 					$this->loadModel("Fraud");
 					$fraud['Fraud']['user_id'] = $this->Session->read("Auth.User.id");
 					$fraud['Fraud']['data'] = serialize($this->data);
@@ -50,11 +50,15 @@ class ApplicationsController extends AppController {
 			} elseif(isset($this->data['Application']['apply'])) {
 				$data = $this->Session->read("raw");
 				$data['Application']['user_id'] = $this->Session->read("Auth.User.id");
+				if(empty($data['Application']['bankcrupt_status'])) {
+					$data['Application']['bankcrupt_status'] = 2;
+				}
 				$this->Application->save($data,array("validates"=>false));
 				$this->loadModel("Userdetail");
 				$this->Userdetail->id = $data_arr['Userdetail']['id'];
 				$this->Userdetail->save($data,array("validates"=>false));
 				$id = $this->Application->getLastInsertId();
+				$this->Session->delete("raw");
 				$this->redirect("/add-details/".$id);
 			}
 			
@@ -84,7 +88,7 @@ class ApplicationsController extends AppController {
 		if(isset($this->data) && !empty($this->data) && !empty($id)){
 			$data = $this->data;
 			$data['Application']['user_id'] = $this->Session->read("Auth.User.id");
-			$data['Application']['province_id'] = $data['Application']['province'];
+			//$data['Application']['province_id'] = $data['Application']['province'];
 			if(is_array($data['Application']['assetsline'])) {
 				$data['Application']['assetsline'] = serialize($data['Application']['assetsline']);
 			}
@@ -107,9 +111,20 @@ class ApplicationsController extends AppController {
 			$this->Application->save($data,array("validates"=>false));
 			$this->Userdetail->id = $data_arr['Userdetail']['id'];
 			$this->Userdetail->save($data,array("validates"=>false));
-			//$this->redirect("/addfiles/".$id);
+			$this->redirect("/addfiles/".$id);
 		} elseif(!empty($id)) {
+			$this->Application->bindModel(
+				array('belongsTo' => array(
+						'Userdetail' => array(
+							'className' => 'Userdetail',
+							'foreignKey'=>false,
+							"conditions"=>"Application.user_id = Userdetail.user_id"
+						)
+					)
+				)
+			);
 			$datas = $this->Application->find("first",array("conditions"=>array("Application.id"=>$id)));
+			//pr($datas);
 			$this->data = $datas;
 		}
 		$this->set(compact("agents"));
@@ -137,9 +152,27 @@ class ApplicationsController extends AppController {
 			}
 			$this->redirect("/confirmation/".$applicationid);
 		}
+		$this->set(compact("applicationid"));
 	}
 	
 	function confirmapp($applicationid = null) {
 		$this->Session->setFlash("Your Application has been send for review, we will get back to you soon.");
+	}
+	
+	
+
+/**
+ * index method
+ *
+ * @return void
+ */
+	public function index() {
+		$this->Application->recursive = 0;
+		$this->Paginator->settings = array(
+			'conditions' => array('Application.user_id' => $this->Session->read("Auth.User.id")),
+			'limit' => 10,
+			'order'=>'Application.created desc'
+		);
+		$this->set('applications', $this->Paginator->paginate());
 	}
 }

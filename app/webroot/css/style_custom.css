@@ -2,3 +2,39 @@ div.tab{float: left; border: 1px solid; width: 100%; background: #003D4C; color:
 div.tab1,.tab2,.tab3,.tab4,.tab5,.tab0{float: left; border: 1px solid; width: 100%; background: #003D4C; color: #EEE; font-weight: bold; font-size: 16px; cursor: pointer;}
 .hide {display:none;}
 label.error{color: #E51E1E; padding: 5px 0 !important; font-size: 12px !important; font-weight: normal !important;}
+input.assets1{float:left;width:45%;clear:none;margin-top:10px;}
+input.assets2{float:right;width:45%;clear:none;margin-top:10px;}
+.progress-bar {
+    float: left;
+    width: 100%;
+	padding: 20px 0;
+	font-weight:bold;
+}
+.progress-bar ul{
+    float: left;
+    list-style: none outside none;
+    width: 100%;
+}
+.progress-bar ul li{
+    float: left;
+    list-style: none outside none;
+	color: #AF1632;
+}
+.progress-bar ul li.active{
+    float: left;
+    list-style: none outside none;
+	color: #1007B7;
+}
+.progress-bar ul li.done{
+    float: left;
+    list-style: none outside none;
+	color: #0B7204;
+}
+.progress-bar ul li.done a{
+    color: #0B7204;
+	text-decoration:none;
+}
+.progress-bar ul li.done a:hover {
+    color: #0B7204;
+	text-decoration:underline;
+}

@@ -159,13 +159,13 @@ $(document).ready(function(){
 		}
 		/* check valid price end here */
 		
-		if ($("#ApplicationProvinceId").val() == '') {
+		if ($("#UserProvinceId").val() == '') {
 			++err_count_step0;
-			$("#ApplicationProvinceId_error").html("Please select a province.");
-			$("#ApplicationProvinceId_error").show();
-			$("#ApplicationProvinceId_error").focus();
+			$("#UserProvinceId_error").html("Please select a province.");
+			$("#UserProvinceId_error").show();
+			$("#UserProvinceId_error").focus();
 		} else {
-			$("#ApplicationProvinceId_error").hide();
+			$("#UserProvinceId_error").hide();
 		}
 		
 		if ($("#ApplicationPurpose").val() == '') {
@@ -518,20 +518,20 @@ $(document).ready(function(){
 	
 	$(".addasset").live("click",function(){
 		var id = $(this).attr("id").split("_");
-		var str = '<br/><label for="assetsline'+id[1]+'">List your assets by name (please separate by line): </label><input id="assetsline'+id[1]+'" class="assets" type="text" placeholder="Home, Car, Jewelry, Furniture, etc." name="data[Application][assetsline]['+id[1]+']"><label for="ApplicationAssets">Assets (by dollar value, separate by same line): </label><input id="ApplicationAssets'+id[1]+'" type="text" maxlength="255" cass="assets" name="data[Application][assets]['+id[1]+']">';
-		$(this).before(str);
+		var str = '<input type="text" id="ApplicationAssetsline'+id[1]+'" class="assets1" name="data[Application][assetsline]['+id[1]+']">		<input type="text" id="ApplicationAssets'+id[1]+'" class="assets2" name="data[Application][assets]['+id[1]+']">';
+		$("#assetscont").append(str);
 		$(this).attr("id","asset_"+(parseInt(id[1])+1));
 	});
 	$(".addliability").live("click",function(){
 		var id = $(this).attr("id").split("_");
-		var str = '<label for="liabilityline'+id[1]+'">List your liabilities by name (please separate by line) </label><input id="liabilityline'+id[1]+'" type="text" placeholder="Payday loans, Visa, Mastercard, Auto Loan, etc." name="data[Application][liabilityline]['+id[1]+']"><label for="liabilities'+id[1]+'">Liabilities (by dollar value, separate by same line): </label><input id="liabilities'+id[1]+'" type="text" name="data[Application][liabilities]['+id[1]+']">';
-		$(this).before(str);
+		var str = '<input type="text" id="ApplicationLiabilityline'+id[1]+'" class="assets1" name="data[Application][liabilityline]['+id[1]+']">		<input type="text" id="ApplicationLiabilities'+id[1]+'" class="assets2" name="data[Application][liabilities]['+id[1]+']">';
+		$("#liabilitiescont").append(str);
 		$(this).attr("id","liability_"+(parseInt(id[1])+1));
 	});
 	$(".addexpense").live("click",function(){
 		var id = $(this).attr("id").split("_");
-		var str = '<label for="ApplicationExpenselist'+id[1]+'">List Monthly Expenses by name (please separate by line): </label><input id="ApplicationExpenselist'+id[1]+'" type="text" maxlength="255" placeholder="Rent, Transportation, Gas, Insurance, Cell phone, etc." name="data[Application][expenselist]['+id[1]+']"><label for="ApplicationExpenses'+id[1]+'">Monthly Expenses (by dollar value, separate by same line): </label><input id="ApplicationExpenses'+id[1]+'" type="text" maxlength="200" name="data[Application][expenses]['+id[1]+']">';
-		$(this).before(str);
+		var str = '<input type="text" id="ApplicationExpenselist'+id[1]+'" class="assets1" name="data[Application][expenselist]['+id[1]+']">		<input type="text" id="ApplicationExpenses'+id[1]+'" class="assets2" name="data[Application][expenses]['+id[1]+']">';
+		$("#expensescont").append(str);
 		$(this).attr("id","addexpense_"+(parseInt(id[1])+1));
 	});
 });

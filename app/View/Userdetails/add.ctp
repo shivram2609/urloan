@@ -16,7 +16,13 @@
 		echo $this->Form->input('street_address');
 		echo $this->Form->input('address1');
 		echo $this->Form->input('city');
+		echo $this->Form->input('street_number');
+		echo $this->Form->input('street_name');
+		echo $this->Form->input('street_unit');
+		echo $this->Form->input('street_type');
+		echo $this->Form->input('street_direction');
 		echo $this->Form->input('province');
+		echo $this->Form->input('province_id');
 		echo $this->Form->input('postal_code');
 		echo $this->Form->input('communication_preferences');
 		echo $this->Form->input('email_notifications');
@@ -31,5 +37,7 @@
 		<li><?php echo $this->Html->link(__('List Userdetails'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Provinces'), array('controller' => 'provinces', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Province'), array('controller' => 'provinces', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

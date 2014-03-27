@@ -1,3 +1,5 @@
+<?php echo $this->Element("progress",array("step"=>3,"appid"=>$applicationid)); ?>
+<h1>Add Documents</h1>
 <?php
 	echo $this->Form->create("ApplicationDocument",array("type"=>"file"));
 	echo $this->Form->input("filename.0",array("type"=>"file","label"=>"Upload File"));

@@ -1,5 +1,5 @@
 <div class="userdetails view">
-<h2><?php echo __('Profile'); ?></h2>
+<h2><?php echo __('Userdetail'); ?></h2>
 <span style="float:right;"><a href="<?php echo $this->Html->url("/editprofile/".$userdetail['Userdetail']['id']); ?>">Edit Profile</a></span>
 	<dl>
 		<dt><?php echo __('Salutation'); ?></dt>
@@ -62,11 +62,37 @@
 			<?php echo h($userdetail['Userdetail']['city']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Province'); ?></dt>
+		<dt><?php echo __('Street Number'); ?></dt>
 		<dd>
-			<?php echo h($userdetail['Userdetail']['province']); ?>
+			<?php echo h($userdetail['Userdetail']['street_number']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Street Name'); ?></dt>
+		<dd>
+			<?php echo h($userdetail['Userdetail']['street_name']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Street Unit'); ?></dt>
+		<dd>
+			<?php echo h($userdetail['Userdetail']['street_unit']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Street Type'); ?></dt>
+		<dd>
+			<?php echo h($userdetail['Userdetail']['street_type']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Street Direction'); ?></dt>
+		<dd>
+			<?php echo h($userdetail['Userdetail']['street_direction']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Province'); ?></dt>
+		<dd>
+			<?php echo h($userdetail['Province']['name']); ?>
+			&nbsp;
+		</dd>
+		
 		<dt><?php echo __('Postal Code'); ?></dt>
 		<dd>
 			<?php echo h($userdetail['Userdetail']['postal_code']); ?>
@@ -80,6 +106,16 @@
 		<dt><?php echo __('Email Notifications'); ?></dt>
 		<dd>
 			<?php echo h($userdetail['Userdetail']['email_notifications']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Created'); ?></dt>
+		<dd>
+			<?php echo h($userdetail['Userdetail']['created']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Modified'); ?></dt>
+		<dd>
+			<?php echo h($userdetail['Userdetail']['modified']); ?>
 			&nbsp;
 		</dd>
 	</dl>

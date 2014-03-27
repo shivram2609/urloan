@@ -2,10 +2,12 @@
 <?php echo $this->Html->script("jquery.ui"); ?>
  <script>
 $(function() {
-$( "#ApplicationEmptime" ).datepicker();
+$( "#ApplicationEmptime" ).datepicker({changeMonth: true,
+changeYear: true});
 });
 </script>
-<h1>Apply Online Now</h1>
+<?php echo $this->Element("progress",array("step"=>2)); ?>
+<h1>Evaluate</h1>
 <?php echo $this->Form->create("Application"); ?>
 <div id="pers" class="tab0">Personal Details</div>
 <div id="pers_cont" class="info">
@@ -39,16 +41,16 @@ $( "#ApplicationEmptime" ).datepicker();
 <div id="address" class="tab2">Your address details</div>
 	<div id="address_cont" class="info hide">
 	<?php
-		echo $this->Form->input("street_number",array("class"=>"validate","label"=>"Street Number"));
-		echo $this->Form->input("street_name",array("class"=>"validate","label"=>"Street Name"));
-		echo $this->Form->input("street_unit",array("class"=>"validate","label"=>"Unit"));
-		echo $this->Form->input("street_type",array("options"=>array("type1"=>"type1","type2"=>"type2"),"empty"=>"Select street type","class"=>"validate","label"=>"Street type"));
-		echo $this->Form->input("street_direction",array("class"=>"validate","label"=>"Direction"));
-		echo $this->Form->input('city',array("class"=>"validate"));
-		echo $this->Form->input('postal_code',array("class"=>"validate","label"=>"Postal code"));
+		echo $this->Form->input("Userdetail.street_number",array("class"=>"validate","label"=>"Street Number"));
+		echo $this->Form->input("Userdetail.street_name",array("class"=>"validate","label"=>"Street Name"));
+		echo $this->Form->input("Userdetail.street_unit",array("class"=>"validate","label"=>"Unit"));
+		echo $this->Form->input("Userdetail.street_type",array("options"=>array("type1"=>"type1","type2"=>"type2"),"empty"=>"Select street type","class"=>"validate","label"=>"Street type"));
+		echo $this->Form->input("Userdetail.street_direction",array("class"=>"validate","label"=>"Direction"));
+		echo $this->Form->input('Userdetail.city',array("class"=>"validate"));
+		echo $this->Form->input('Userdetail.postal_code',array("class"=>"validate","label"=>"Postal code"));
 		echo $this->Form->input('rent',array("class"=>"validate","label"=>"Monthly Mortgage or Rent(Amount $)"));
 		echo $this->Form->input("time_curr_address",array("options"=>array("6 months"=>"6 Months","1 year"=>"1 Year","1+ years"=>"1+ Years"),"class"=>"validate","label"=>"Time at current address"));
-		echo $this->Form->input('province',array("options"=>$provinces,"class"=>"validate","label"=>"Province in Canada"));
+		echo $this->Form->input('Userdetail.province',array("options"=>$provinces,"class"=>"validate","label"=>"Province in Canada"));
 		echo $this->Form->input("resident_status",array("options"=>array("status 1"=>"Status 1","status 2"=>"Status 2"),"empty"=>"Select residential status","label"=>"Residential Status","class"=>"validate"));
 	?>
 	<input type="button" value="Save & Continue" id="step3"/>
@@ -67,19 +69,32 @@ $( "#ApplicationEmptime" ).datepicker();
 	</div>
 <div id="finan" class="tab4">Additional Financial Disclosure</diV>
 	<div id="finan_cont" class="info hide">
-		<?php echo $this->Form->input("Application.assetsline.0",array("label"=>"List your assets by name (please separate by line): ","placeholder"=>"Home, Car, Jewelry, Furniture, etc.")); ?>
-		<?php echo $this->Form->input("Application.assets.0",array("label"=>"Assets (by dollar value, separate by same line): ","class"=>"assets")); ?>
+	<label style="font-weight: bold;">List your assets below (Home, Car, Jewellery, Furniture, etc.)</label>
+	<div style="float:left; width:100%" id="assetscont">
+	<label style="float: left; width: 53%;">Assets name</label><label style="float: left; width: 45%;">Dollar value</label>
+		<?php echo $this->Form->input("Application.assetsline.0",array("label"=>false,"div"=>false,"class"=>"assets1")); ?>
+		<?php echo $this->Form->input("Application.assets.0",array("label"=>false,"div"=>false,"class"=>"assets2")); ?>
+	</div>
 		<a href="javascript:void(0);" id="asset_1" class="addasset">Add More</a>
+	
+	<label style="font-weight: bold; margin-top: 20px;">List your liabilities by name (please separate by line):</label>
+	<div style="float:left; width:100%" id="liabilitiescont">
+	<label style="float: left; width: 53%;">Liability name</label><label style="float: left; width: 45%;">Dollar value</label>
+		<?php echo $this->Form->input("Application.liabilityline.0",array("label"=>false,"div"=>false,"class"=>"assets1")); ?>
+		<?php echo $this->Form->input("Application.liabilities.0",array("label"=>false,"div"=>false,"class"=>"assets2")); ?>
+	</div>
+	<a href="javascript:void(0);" id="liability_1" class="addliability">Add More</a>
+	
+	
+	<label style="font-weight: bold; margin-top: 20px;">List Monthly Expenses by name (please separate by line):</label>
+	<div style="float:left; width:100%" id="expensescont">
+	<label style="float: left; width: 53%;">Expenses name</label><label style="float: left; width: 45%;">Dollar value</label>
+		<?php echo $this->Form->input("Application.expenselist.0",array("label"=>false,"div"=>false,"class"=>"assets1")); ?>
+		<?php echo $this->Form->input("Application.expenses.0",array("label"=>false,"div"=>false,"class"=>"assets2")); ?>
+	</div>
+	<a href="javascript:void(0);" id="expense_1" class="addexpense">Add More</a>
 		
-		<?php echo $this->Form->input("Application.liabilityline.0",array("label"=>"List your liabilities by name (please separate by line) ","placeholder"=>"Payday loans, Visa, Mastercard, Auto Loan, etc.")); ?>
-		<?php echo $this->Form->input("Application.liabilities.0",array("label"=>"Liabilities (by dollar value, separate by same line): ")); ?>
-		<a href="javascript:void(0);" id="liability_1" class="addliability">Add More</a>
-		
-		<?php echo $this->Form->input("Application.expenselist.0",array("label"=>"List Monthly Expenses by name (please separate by line): ","placeholder"=>"Rent, Transportation, Gas, Insurance, Cell phone, etc.")); ?>
-		<?php echo $this->Form->input("Application.expenses.0",array("label"=>"Monthly Expenses (by dollar value, separate by same line): ")); ?>
-		<a href="javascript:void(0);" id="expense_1" class="addexpense">Add More</a>
-		
-		<input type="button" value="Save & Continue" id="step5"/>
+	<input type="button" value="Save & Continue" id="step5"/>
 	</div>
 <div id="terms" class="tab5">Acceptance of Terms</div>
 	<div id="terms_cont" class="info hide">

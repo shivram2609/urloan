@@ -4,6 +4,7 @@ App::uses('AppModel', 'Model');
  * Userdetail Model
  *
  * @property User $User
+ * @property Province $Province
  */
 class Userdetail extends AppModel {
 
@@ -21,15 +22,14 @@ class Userdetail extends AppModel {
 			'foreignKey' => 'user_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
-			'type'=>"inner"
-		)
-	);
-	
-	var $validate = array(
-		"first_name"=>array(
-			"rule"=>"notempty",
-			"message"=>"Please enter first name."
+			'order' => ''
+		),
+		'Province' => array(
+			'className' => 'Province',
+			'foreignKey' => 'province_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 }

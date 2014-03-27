@@ -16,7 +16,13 @@
 			<th><?php echo $this->Paginator->sort('street_address'); ?></th>
 			<th><?php echo $this->Paginator->sort('address1'); ?></th>
 			<th><?php echo $this->Paginator->sort('city'); ?></th>
+			<th><?php echo $this->Paginator->sort('street_number'); ?></th>
+			<th><?php echo $this->Paginator->sort('street_name'); ?></th>
+			<th><?php echo $this->Paginator->sort('street_unit'); ?></th>
+			<th><?php echo $this->Paginator->sort('street_type'); ?></th>
+			<th><?php echo $this->Paginator->sort('street_direction'); ?></th>
 			<th><?php echo $this->Paginator->sort('province'); ?></th>
+			<th><?php echo $this->Paginator->sort('province_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('postal_code'); ?></th>
 			<th><?php echo $this->Paginator->sort('communication_preferences'); ?></th>
 			<th><?php echo $this->Paginator->sort('email_notifications'); ?></th>
@@ -42,7 +48,15 @@
 		<td><?php echo h($userdetail['Userdetail']['street_address']); ?>&nbsp;</td>
 		<td><?php echo h($userdetail['Userdetail']['address1']); ?>&nbsp;</td>
 		<td><?php echo h($userdetail['Userdetail']['city']); ?>&nbsp;</td>
+		<td><?php echo h($userdetail['Userdetail']['street_number']); ?>&nbsp;</td>
+		<td><?php echo h($userdetail['Userdetail']['street_name']); ?>&nbsp;</td>
+		<td><?php echo h($userdetail['Userdetail']['street_unit']); ?>&nbsp;</td>
+		<td><?php echo h($userdetail['Userdetail']['street_type']); ?>&nbsp;</td>
+		<td><?php echo h($userdetail['Userdetail']['street_direction']); ?>&nbsp;</td>
 		<td><?php echo h($userdetail['Userdetail']['province']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($userdetail['Province']['name'], array('controller' => 'provinces', 'action' => 'view', $userdetail['Province']['id'])); ?>
+		</td>
 		<td><?php echo h($userdetail['Userdetail']['postal_code']); ?>&nbsp;</td>
 		<td><?php echo h($userdetail['Userdetail']['communication_preferences']); ?>&nbsp;</td>
 		<td><?php echo h($userdetail['Userdetail']['email_notifications']); ?>&nbsp;</td>
@@ -76,5 +90,7 @@
 		<li><?php echo $this->Html->link(__('New Userdetail'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Provinces'), array('controller' => 'provinces', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Province'), array('controller' => 'provinces', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
