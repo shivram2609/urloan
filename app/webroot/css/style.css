@@ -23,7 +23,7 @@ body{font-family:arial;}
 .backgroundcolor{background:none !important;}
 .clear{clear:both;}
 /********** header part css here**************/
-.wrapper{margin:auto;width:100%;max-width:910px;}
+.wrapper{margin:auto;width:96%;max-width:910px;}
 .urloan_logo{float:left;width:171px;height:148px;margin:20px 0 0;}
 .header_right{float:right;margin:50px 0 0;}
 .apply_now_main{float:right;width:200px;text-align:center;}
@@ -37,6 +37,7 @@ body{font-family:arial;}
 /**** main navigation css over here  ****/
 /***** login css here ******/
 .login_form_main{padding:10px;background:#f0f0f0;border:1px solid #dadada;border-radius:6px;-o-border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;max-width:400px;margin:auto;clear:both;}
+.signup_form_main{padding:10px;background:#f0f0f0;border:1px solid #dadada;border-radius:6px;-o-border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;width:100%;margin:auto;clear:both;}
 h1{font-size:34px;color:#252D31;margin:0 0 15px;}
 .login_form_row,.signup_form_indiv{margin:0 0 15px;}
 .login_form_row label,.signup_form_indiv label{width:100%;float:left;color:#566573;font-size:14px;margin:0 0 5px;font-weight:bold;}
@@ -56,12 +57,24 @@ footer a:hover{text-decoration:underline;}
 /*** signup css here ****/
 .signup_form_indiv{max-width:446px;width:49%;}
 .signup_form_indiv input[type="submit"]{width:auto;background:#0E4181;color:#fff;border:2px solid #0e4181;font-weight:bold;padding:0 11px;float:right;}
+nav a#pull, .navigation {display: none;color:#fff;}
 /**** signup css  over here ****/
 
 /**** media queries **************/
 @media all and (max-width:909px){
-.main_navigation, .main_navigation ul{text-align:center;}
+.main_navigation, .main_navigation ul{text-align:center; display:none;}
 .main_navigation ul li, .main_navigation ul li a{float:none;display:inline-block;}
+
+.navigation {display:table; position:relative;}
+.navigation {height:auto; background:none; width:100%; margin:10px 0% 20px; z-index:9; clear:both; }
+.navigation ul{width:100%; display:none; height: auto; background-color: #0e4181; border-bottom: 1px solid #FFFFFF;  border-left: 1px solid #FFFFFF; position:absolute; z-index:9; float:left; top:30px;}
+.navigation li {width: 33.3% !important;float: left;position: relative; border:none; padding:0; margin:0px !important;}
+.navigation li:hover {background-color: #31A2D7;}
+.navigation li a {border-top: 1px solid #fff; border-right: 1px solid #fff;  padding:5px 0px !important; color:#fff;  border-radius:0px !important;display:inline-block;}
+.navigation li a:hover, nav li a.active {border-top: 1px solid #fff; border-right: 1px solid #fff;  color:#fff; box-shadow:none; }
+.navigation a {text-align: left; width: 100%;text-indent: 15px; color:#fff;}
+.navigation a#pull {display: block; background:#0e4181; width: 100%; position: relative; min-height:30px; color: #fff;  float: left;font-size:15px; padding:10px 10px 0; text-indent:0px; margin:0px 0 0;}
+.navigation a#pull:after {content:"";	background: url('../img/nav-icon.png') no-repeat;width: 30px;height: 30px;	display: inline-block !important;position: absolute;right:-5px;top: 5px;}
 }
 @media all and (max-width:800px)
 {
@@ -85,4 +98,5 @@ header{text-align:center;}
 }
 @media all and (max-width:480px){
 .signup_form_indiv{width:100%;float:left;}
+.navigation li {width: 50% !important;float: left;position: relative; border:none; padding:0; margin:0px !important;}
 }

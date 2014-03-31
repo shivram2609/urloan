@@ -1,122 +1,144 @@
-<div class="userdetails view">
-<h2><?php echo __('Userdetail'); ?></h2>
+<h1>My Profile</h2>
 <span style="float:right;"><a href="<?php echo $this->Html->url("/editprofile/".$userdetail['Userdetail']['id']); ?>">Edit Profile</a></span>
-	<dl>
-		<dt><?php echo __('Salutation'); ?></dt>
-		<dd>
+<section class="left_cont"></section>
+<section class="right_cont">
+
+		<label class="header"><?php echo __('Salutation'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['salutation']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('First Name'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('First Name'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['first_name']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Last Name'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Last Name'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['last_name']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Gender'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Gender'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['gender']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Birth Date'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Birth Date'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['birth_date']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Work Phone'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Work Phone'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['work_phone']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Work Phone Extension'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Work Phone Extension'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['work_phone_extension']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Home Phone'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Home Phone'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['home_phone']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Mobile Phone'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Mobile Phone'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['mobile_phone']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Street Address'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Street Address'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['street_address']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Address1'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Address1'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['address1']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('City'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('City'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['city']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Street Number'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Street Number'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['street_number']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Street Name'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Street Name'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['street_name']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Street Unit'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Street Unit'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['street_unit']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Street Type'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Street Type'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['street_type']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Street Direction'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Street Direction'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['street_direction']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Province'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Province'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Province']['name']); ?>
 			&nbsp;
-		</dd>
-		
-		<dt><?php echo __('Postal Code'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Postal Code'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['postal_code']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Communication Preferences'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Communication Preferences'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['communication_preferences']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Email Notifications'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Email Notifications'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['email_notifications']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Created'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['created']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Modified'); ?></label>
+		<label class="cont">
 			<?php echo h($userdetail['Userdetail']['modified']); ?>
 			&nbsp;
-		</dd>
+		</label>
 	</dl>
-</div>
+</section>

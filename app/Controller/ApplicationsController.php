@@ -50,6 +50,7 @@ class ApplicationsController extends AppController {
 			} elseif(isset($this->data['Application']['apply'])) {
 				$data = $this->Session->read("raw");
 				$data['Application']['user_id'] = $this->Session->read("Auth.User.id");
+				$data['Application']['app_step'] = 1;
 				if(empty($data['Application']['bankcrupt_status'])) {
 					$data['Application']['bankcrupt_status'] = 2;
 				}
@@ -108,10 +109,11 @@ class ApplicationsController extends AppController {
 				$data['Application']['expenses'] = serialize($data['Application']['expenses']);
 			}
 			$this->Application->id = $id; 
+			$data['Application']['app_step'] = 2;
 			$this->Application->save($data,array("validates"=>false));
 			$this->Userdetail->id = $data_arr['Userdetail']['id'];
 			$this->Userdetail->save($data,array("validates"=>false));
-			$this->redirect("/addfiles/".$id);
+			$this->redirect("/banking-details/".$id);
 		} elseif(!empty($id)) {
 			$this->Application->bindModel(
 				array('belongsTo' => array(
@@ -139,6 +141,7 @@ class ApplicationsController extends AppController {
 		}
 		if($this->request->is('post')){
 			$this->loadModel("ApplicationDocument");
+			$flag = false;
 			foreach($this->data['filename'] as $key=>$val) {
 				$uploadarr = array();
 				if(!empty($val['name'])) {
@@ -147,8 +150,16 @@ class ApplicationsController extends AppController {
 						$uploadarr['ApplicationDocument'] = array("application_id"=>$applicationid,"filename"=>$val['name'],"file_path"=>WWW_ROOT."files/appfiles/".$newname);
 						$this->ApplicationDocument->create();
 						$this->ApplicationDocument->save($uploadarr);
+						$flag = true;
 					}
 				}
+			}
+			if ($flag) {
+				$app['Application']['appstatus'] = 'In Process';
+				$app['Application']['app_step'] = 4;
+				$this->Application->create();
+				$this->Application->id = $applicationid;
+				$this->Application->save($app);
 			}
 			$this->redirect("/confirmation/".$applicationid);
 		}

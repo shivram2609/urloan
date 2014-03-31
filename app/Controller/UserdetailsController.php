@@ -118,7 +118,6 @@ class UserdetailsController extends AppController {
  * @return void
  */
 	public function profile() {
-	$this->layout = "default_old";
 		$options = array('conditions' => array('Userdetail.user_id'=>$this->Session->read("Auth.User.id")));
 		$this->set('userdetail', $this->Userdetail->find('first', $options));
 		$this->render("view");

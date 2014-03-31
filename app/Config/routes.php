@@ -39,6 +39,8 @@
 	Router::connect('/addfiles/*', array('controller' => 'applications', 'action' => 'addDocuments'));
 	Router::connect('/confirmation/*', array('controller' => 'applications', 'action' => 'confirmapp'));
 	Router::connect('/add-details/*', array('controller' => 'applications', 'action' => 'adddetails'));
+	Router::connect('/myapplications', array('controller' => 'applications', 'action' => 'index'));
+	Router::connect('/banking-details/*', array('controller' =>'applicationbankinginformations', 'action' => 'add'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */

@@ -29,6 +29,7 @@ $cakeDescription = 'Urloan';
 				<a href="<?php echo $this->Html->url("/apply-loan"); ?>">Loan Application</a>
 				&nbsp;|&nbsp;<a href="<?php echo $this->Html->url("/change-password"); ?>">Change Password</a>
 				&nbsp;|&nbsp;<a href="<?php echo $this->Html->url("/profile"); ?>">My Profile</a>
+				&nbsp;|&nbsp;<a href="<?php echo $this->Html->url("/myapplications"); ?>">My Applications</a>
 			<?php } ?>
 		</div>
 		<div id="content">

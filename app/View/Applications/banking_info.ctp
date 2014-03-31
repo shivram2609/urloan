@@ -1,4 +1,4 @@
-<?php echo $this->Element("progress",array("step"=>4,"appid"=>$applicationid)); ?>
+<?php echo $this->Element("progress",array("step"=>3,"appid"=>$applicationid)); ?>
 <h1>Add Documents</h1>
 <?php
 	echo $this->Form->create("ApplicationDocument",array("type"=>"file"));

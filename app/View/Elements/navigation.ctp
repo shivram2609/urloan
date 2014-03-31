@@ -1,3 +1,4 @@
+<?php if(!$this->Session->read("Auth.User.id")) { ?>
 <nav class="main_navigation">
 	<ul>
 		<li><a href="javascript:void(0);" title="How it works"><img src="img/main-menu_01.gif" width="155" height="34" alt="How it works" /></a></li>
@@ -13,3 +14,18 @@
 		</li>
 	</ul>
 </nav>
+<nav class="navigation">
+<a href="#" id="pull">Menu</a>
+	<ul>
+		<li><a href="javascript:void(0);" title="How it works">How it works</a></li>
+		<li><a href="javascript:void(0);" title="FAQ">FAQ</a></li>
+		<li><a href="javascript:void(0);" title="About Us">About Us</a></li>
+		<li><a href="javascript:void(0);" title="Contact Us">Contact Us</a></li>
+		<li><a href="javascript:void(0);" title="Urloan Blog">Urloan Blog</a></li>
+		<li><a href="javascript:void(0);" title="Facebook">Facebook</a></li>
+		<li><a href="javascript:void(0);" title="Google Plus">Google Plus</a></li>
+		<li><a href="javascript:void(0);" title="Twitter">Twitter</a><li>
+		<li><a href="javascript:void(0);" title="Linked In">Linked In</a></li>
+	</ul>
+</nav>
+<?php } ?>

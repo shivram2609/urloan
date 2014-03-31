@@ -1,4 +1,4 @@
-<header>
+<header class="headerext">
 	<div class="wrapper">
 		<a href="javascript:void(0);" title="URLOAN" class="urloan_logo"><img src="img/logo.png" width="171" height="148" alt="Urloan" /></a>
 		<div class="header_right">

@@ -9,7 +9,7 @@ $(document).ready(function(){
 			$(this).removeAttr("required");
 		}
 	});
-	$("#ApplicationApplyForm,#ApplicationAdddetailsForm").find("input,select,checkbox").each(function(){
+	$("#ApplicationApplyForm,#ApplicationAdddetailsForm,#ApplicationBankingInformationAddForm").find("input,select,checkbox").each(function(){
 		if($(this).hasClass("validate")){
 			$(this).prev("label").html($(this).prev("label").html() + "<em style='color:red;'>*<em>");
 			$(this).after('<label id = "'+$(this).attr("id")+'_error" class="hide error"></label>');
@@ -185,6 +185,68 @@ $(document).ready(function(){
 			return false;
 		}
 	}
+	
+	$.fn.checkbankinfo = function(){
+		var err_count_bankinfo = 0;
+		if ($("#ApplicationBankingInformationInstituteNumber").val() == '') {
+			++err_count_bankinfo;
+			$("#ApplicationBankingInformationInstituteNumber_error").html("Please enter institute number.");
+			$("#ApplicationBankingInformationInstituteNumber_error").show();
+			$("#ApplicationBankingInformationInstituteNumber_error").focus();
+		} else {
+			$("#ApplicationBankingInformationInstituteNumber_error").hide();
+		}
+		if ($("#ApplicationBankingInformationTransitNumber").val() == '') {
+			++err_count_bankinfo;
+			$("#ApplicationBankingInformationTransitNumber_error").html("Please enter transit number.");
+			$("#ApplicationBankingInformationTransitNumber_error").show();
+			$("#ApplicationBankingInformationTransitNumber_error").focus();
+		} else {
+			$("#ApplicationBankingInformationTransitNumber_error").hide();
+		}
+		if ($("#ApplicationBankingInformationAccountNumber").val() == '') {
+			++err_count_bankinfo;
+			$("#ApplicationBankingInformationAccountNumber_error").html("Please enter account number.");
+			$("#ApplicationBankingInformationAccountNumber_error").show();
+			$("#ApplicationBankingInformationAccountNumber_error").focus();
+		} else {
+			$("#ApplicationBankingInformationAccountNumber_error").hide();
+		}
+		if ($("#ApplicationBankingInformationNameOfAccount").val() == '') {
+			++err_count_bankinfo;
+			$("#ApplicationBankingInformationNameOfAccount_error").html("Please enter full name on account.");
+			$("#ApplicationBankingInformationNameOfAccount_error").show();
+			$("#ApplicationBankingInformationNameOfAccount_error").focus();
+		} else {
+			$("#ApplicationBankingInformationNameOfAccount_error").hide();
+		}
+		if ($("#ApplicationBankingInformationType").val() == '') {
+			++err_count_bankinfo;
+			$("#ApplicationBankingInformationType_error").html("Please select type of account.");
+			$("#ApplicationBankingInformationType_error").show();
+			$("#ApplicationBankingInformationType_error").focus();
+		} else {
+			$("#ApplicationBankingInformationType_error").hide();
+		}
+		if ($("#term2:checked").val() != 1) {
+			++err_count_bankinfo;
+			$("#term2_error").html("Please accept terms.");
+			$("#term2_error").show();
+		} else {
+			$("#term2_error").hide();
+		}
+		
+		
+		if (err_count_bankinfo == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	$("#ApplicationBankingInformationAddForm").submit(function(){
+		return $(this).checkbankinfo();
+	});
 	
 	$("#ApplicationApplyForm").submit(function(){
 		//alert($(this).step0());
@@ -533,5 +595,23 @@ $(document).ready(function(){
 		var str = '<input type="text" id="ApplicationExpenselist'+id[1]+'" class="assets1" name="data[Application][expenselist]['+id[1]+']">		<input type="text" id="ApplicationExpenses'+id[1]+'" class="assets2" name="data[Application][expenses]['+id[1]+']">';
 		$("#expensescont").append(str);
 		$(this).attr("id","addexpense_"+(parseInt(id[1])+1));
+	});
+	
+	$(function() {
+		var pull = $('#pull');
+		menu = $('nav ul');
+		menuHeight = menu.height();
+
+		$(pull).on('click', function(e) {
+			e.preventDefault();
+			menu.slideToggle();
+		});
+
+		$(window).resize(function() {
+			var w = $(window).width();
+			if (w > 320 && menu.is(':hidden')) {
+				menu.removeAttr('style');
+			}
+		});
 	});
 });
