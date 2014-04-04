@@ -25,7 +25,7 @@ body{font-family:arial;}
 /********** header part css here**************/
 .wrapper{margin:auto;width:96%;max-width:910px;}
 .urloan_logo{float:left;width:171px;height:148px;margin:20px 0 0;}
-.header_right{float:right;margin:50px 0 0;}
+.header_right{float:right;margin:50px 0 0; width:75%; text-align:right;}
 .apply_now_main{float:right;width:200px;text-align:center;}
 .apply_now_main b{font-size:13px;font-weight:bold;color:#626262;}
 .apply_now{float:right;margin:6px 0 0;}
@@ -36,9 +36,9 @@ body{font-family:arial;}
 .main_navigation ul li, .main_navigation ul li a{float:left;}
 /**** main navigation css over here  ****/
 /***** login css here ******/
-.login_form_main{padding:10px;background:#f0f0f0;border:1px solid #dadada;border-radius:6px;-o-border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;max-width:400px;margin:auto;clear:both;}
+.login_form_main{padding:10px;background:#f0f0f0;border:1px solid #dadada;border-radius:6px;-o-border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;max-width:400px;margin:auto;clear:both; display:table;}
 .signup_form_main{padding:10px;background:#f0f0f0;border:1px solid #dadada;border-radius:6px;-o-border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;width:100%;margin:auto;clear:both;}
-h1{font-size:34px;color:#252D31;margin:0 0 15px;}
+h1, h2{font-size:25px;color:#252D31;margin:0 0 15px;}
 .login_form_row,.signup_form_indiv{margin:0 0 15px;}
 .login_form_row label,.signup_form_indiv label{width:100%;float:left;color:#566573;font-size:14px;margin:0 0 5px;font-weight:bold;}
 .login_form_row input,.signup_form_indiv input{border:2px solid #BDC3C7;border-radius:6px;-o-border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;height:34px;color:#34495E;font-size:13px;line-height:32px;padding:5px;width:100%;font-weight:bold;}
@@ -59,6 +59,185 @@ footer a:hover{text-decoration:underline;}
 .signup_form_indiv input[type="submit"]{width:auto;background:#0E4181;color:#fff;border:2px solid #0e4181;font-weight:bold;padding:0 11px;float:right;}
 nav a#pull, .navigation {display: none;color:#fff;}
 /**** signup css  over here ****/
+fieldset{border:1px solid #ccc; padding:10px; clear: both;}
+legend{font-size:18px; padding:0 10px; margin:20px;}
+fieldset label{display: inline-block; margin: 0 1% 0 0; text-align: right; width: 40%;}
+fieldset input, fieldset select{border: 1px solid #CCCCCC; padding: 2px 3px; width: 40%;}
+fieldset .input {margin:0 0 10px;}
+.submit{margin: 10px 0 0; text-align: center;}
+.userdetails{float: right; width: 70%;}
+div#qualify_cont h2 {float:left;font-weight:bold;font-size:15px;}
+div#slider-range-min {float: left; margin: -10px 0 16px; width: 100%;}
+select.ui-datepicker-month{height:27px !ipmortant;}
+select.ui-datepicker-year{height:27px !ipmortant;}
+ a{color:#183156;}
+ a:hover{color:#CF001C;}
+.left-panel{width:28%; float:left; font-size: 14px; margin: 20px 0;}
+.left-panel a{color:#183156; display:block;}
+.left-panel a:hover{color:#CF001C;}
+.left-panel ul{margin:0px; padding:0px;}
+.left-panel ul li{margin:0px; padding:8px 0px; list-style:none; border-bottom:1px solid #ccc;}
+label#back_label{float:left;width:100%}
+.button, input[type="submit"], input[type="submit"].button, a.button, input[type="button"] {
+	color: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	background: #3B8230;
+	background-repeat: repeat-x;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#76BF6B), to(#3B8230));
+	background-image: -webkit-linear-gradient(top, #76BF6B, #3B8230);
+	background-image: -moz-linear-gradient(top, #76BF6B, #3B8230);
+	background-image: -ms-linear-gradient(top, #76BF6B, #3B8230);
+	background-image: -o-linear-gradient(top, #76BF6B, #3B8230);
+	background-image: linear-gradient(top, #76BF6B, #3B8230);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+        padding:5px 10px;
+width:auto;
+
+}
+
+.button:hover, input[type="submit"]:hover, input[type="submit"].button:hover, a.button:hover, input[type="button"]:hover {
+	color: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	background: #3B8230;
+	background-repeat: repeat-x;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#3B8230), to(#76BF6B));
+	background-image: -webkit-linear-gradient(top, #3B8230, #76BF6B);
+	background-image: -moz-linear-gradient(top, #3B8230, #76BF6B);
+	background-image: -ms-linear-gradient(top, #3B8230, #76BF6B);
+	background-image: -o-linear-gradient(top, #3B8230, #76BF6B);
+	background-image: linear-gradient(top, #3B8230, #76BF6B);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+        padding:5px 10px;
+}
+
+.info input[type="button"]{clear:both;}
+
+.info fieldset label{margin: 0 1% 0 0; text-align: left; width:auto;}
+.info {
+	margin-bottom: 1em;
+	padding: 1.5em;
+	vertical-align: text-top;
+        float:left;
+        border: 1px solid #CCCCCC;
+width:100%;
+
+}
+.info .input {
+	color: #444;
+     float: left;
+    margin: 0 0 20px;
+    width: 100%;
+}
+.info .required {
+	font-weight: bold;
+}
+.info .required label:after {
+	color: #e32;
+	content: '*';
+	display:inline;
+}
+.info div.submit {
+	border: 0;
+	clear: both;
+	margin-top: 10px;
+}
+label {
+	display: block;
+	margin-bottom:3px;
+        font-size: 13px;
+        }
+input, textarea {
+	clear: both;
+	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
+	border: 1px solid #CCCCCC; padding: 2px 3px;
+	width:100%;
+}
+select {
+	border: 1px solid #CCCCCC;
+        height: 23px;
+        line-height: 23px;
+        padding: 2px 3px;
+        vertical-align: text-bottom;
+        width: 100%;
+}
+select[multiple=multiple] {
+	width: 100%;
+}
+option {
+	
+	padding: 0 3px;
+}
+input[type=checkbox] {
+	margin: 0px 6px 7px 2px;
+	width: auto;
+}
+div.checkbox label {
+	display: inline;
+}
+input[type=radio] {
+	width:auto;
+	margin: 1px 5px 0 0;
+	padding: 0;
+	line-height: 26px;
+}
+.radio label {
+	margin: 0 0 6px 20px;
+	line-height: 26px;
+}
+input[type=submit] {
+	display: inline;
+	font-size: 110%;
+	width: auto;
+}
+.info .submit input[type=submit] {
+	background:#62af56;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#76BF6B), to(#3B8230));
+	background-image: -webkit-linear-gradient(top, #76BF6B, #3B8230);
+	background-image: -moz-linear-gradient(top, #76BF6B, #3B8230);
+	border-color: #2d6324;
+	color: #fff;
+	text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0px;
+	padding: 8px 10px;
+}
+.info .submit input[type=submit]:hover {
+	background: #5BA150;
+}
+div.tab1, .tab2, .tab3, .tab4, .tab5, .tab0{padding:10px;}
+.file{margin:0 0 20px;}
+.file label{display: inline-block; margin: 0 1% 0 0; text-align: right; width: 40%;}
+.file input[type="file"]{border: 1px solid #CCCCCC; padding: 2px 3px; width: 40%;}
+.applications table{
+	margin-bottom: 1em;
+	padding: .5em;
+	vertical-align: text-top;
+        float:left;
+        border: 1px solid #CCCCCC;
+        width:100%;
+}
+.applications p{ font-size:13px;}
+.applications table th{border: 1px solid #CCCCCC; border-colaps:colaps; padding:5px; background:#F6F2EF; font-size:15px; text-align:center;}
+.applications table td{border: 1px solid #CCCCCC; border-colaps:colaps; padding:8px 5px; font-size:13px; text-align:center;}
+.paging{display:table; margin:20px auto;}
+.paging .prev{margin:0 10px 0 0;}
+.paging .next{margin:0 0 0 10px;}
+.right-panel{
+    border-left: 1px solid #CCCCCC;
+    float: right;
+    padding: 0 0 0 2%;
+    width: 70%;
+min-height:300px;
+}
+.proposal-pro
+{
+clear:both;
+margin:0 0 20px;
+}
+.proposal-pro label
+{
+display:inline-block;
+margin:0 20px 0 0;
+}
+#terms_cont label{display:inline;}
 
 /**** media queries **************/
 @media all and (max-width:909px){

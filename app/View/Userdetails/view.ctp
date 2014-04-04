@@ -1,6 +1,8 @@
 <h1>My Profile</h2>
-<span style="float:right;"><a href="<?php echo $this->Html->url("/editprofile/".$userdetail['Userdetail']['id']); ?>">Edit Profile</a></span>
-<section class="left_cont"></section>
+<?php echo $this->Session->flash(); ?>
+<span style="float:right;">
+<a href="<?php echo $this->Html->url("/editprofile/".$userdetail['Userdetail']['id']); ?>" class='button'>Edit Profile</a></span>
+<?php echo $this->element("left_navigation"); ?>
 <section class="right_cont">
 
 		<label class="header"><?php echo __('Salutation'); ?></label>
@@ -95,7 +97,13 @@
 		<div class="separator"></div>
 		<label class="header"><?php echo __('Street Type'); ?></label>
 		<label class="cont">
-			<?php echo h($userdetail['Userdetail']['street_type']); ?>
+			<?php echo h($userdetail['StreetType']['heading']); ?>
+			&nbsp;
+		</label>
+		<div class="separator"></div>
+		<label class="header"><?php echo __('Residential Status'); ?></label>
+		<label class="cont">
+			<?php echo h($userdetail['Userdetail']['resident_status']); ?>
 			&nbsp;
 		</label>
 		<div class="separator"></div>

@@ -46,7 +46,7 @@ class ApplicationBankingInformationsController extends AppController {
  * @return void
  */
 	public function add($id=NULL) {
-	$this->layout ="default_old";
+	$this->layout ="default";
 		if (isset($this->data) && !empty($this->request->data)) {
 			$this->ApplicationBankingInformation->create();
 			$data = $this->request->data;

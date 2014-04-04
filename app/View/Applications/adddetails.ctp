@@ -3,11 +3,14 @@
  <script>
 $(function() {
 $( "#ApplicationEmptime" ).datepicker({changeMonth: true,
-changeYear: true});
+changeYear: true,yearRange: '1950:2014'});
 });
 </script>
 <?php echo $this->Element("progress",array("step"=>2)); ?>
+<?php echo $this->element("left_navigation"); ?>
+<section class="right-panel">
 <h1>Evaluate</h1>
+<p>Fields marked <em style="color:red;">*</em> sign are mandatory.</P>
 <?php echo $this->Form->create("Application"); ?>
 <div id="pers" class="tab0">Personal Details</div>
 <div id="pers_cont" class="info">
@@ -44,14 +47,14 @@ changeYear: true});
 		echo $this->Form->input("Userdetail.street_number",array("class"=>"validate","label"=>"Street Number"));
 		echo $this->Form->input("Userdetail.street_name",array("class"=>"validate","label"=>"Street Name"));
 		echo $this->Form->input("Userdetail.street_unit",array("class"=>"validate","label"=>"Unit"));
-		echo $this->Form->input("Userdetail.street_type",array("options"=>array("type1"=>"type1","type2"=>"type2"),"empty"=>"Select street type","class"=>"validate","label"=>"Street type"));
+		echo $this->Form->input("Userdetail.street_type_id",array("options"=>$streettypes,"empty"=>"Select street type","class"=>"validate","label"=>"Street type"));
 		echo $this->Form->input("Userdetail.street_direction",array("class"=>"validate","label"=>"Direction"));
 		echo $this->Form->input('Userdetail.city',array("class"=>"validate"));
-		echo $this->Form->input('Userdetail.postal_code',array("class"=>"validate","label"=>"Postal code"));
+		echo $this->Form->input('Userdetail.postal_code',array("class"=>"validate","label"=>"Postal code","placeholder"=>"e.g T5G 1X3"));
 		echo $this->Form->input('rent',array("class"=>"validate","label"=>"Monthly Mortgage or Rent(Amount $)"));
 		echo $this->Form->input("time_curr_address",array("options"=>array("6 months"=>"6 Months","1 year"=>"1 Year","1+ years"=>"1+ Years"),"class"=>"validate","label"=>"Time at current address"));
 		echo $this->Form->input('Userdetail.province',array("options"=>$provinces,"class"=>"validate","label"=>"Province in Canada"));
-		echo $this->Form->input("resident_status",array("options"=>array("status 1"=>"Status 1","status 2"=>"Status 2"),"empty"=>"Select residential status","label"=>"Residential Status","class"=>"validate"));
+		echo $this->Form->input("Userdetail.resident_status",array("options"=>array("Tenant"=>"Tenant","Owner"=>"Owner"),"empty"=>"Select residential status","label"=>"Residential Status","class"=>"validate"));
 	?>
 	<input type="button" value="Save & Continue" id="step3"/>
 	</div>
@@ -61,7 +64,7 @@ changeYear: true});
 		<?php echo $this->Form->input("company",array("type"=>"text")); ?>
 		<?php echo $this->Form->input("position",array("type"=>"text")); ?>
 		<?php echo $this->Form->input("empmainline",array("type"=>"text","label"=>"Employer main phone line")); ?>
-		<?php echo $this->Form->input("emptime",array("type"=>"text","label"=>"Start date at current employer:")); ?>
+		<?php echo $this->Form->input("emptime",array("type"=>"text","label"=>"Start date at current employer:","readonly"=>true)); ?>
 		<?php echo $this->Form->input("pay",array("type"=>"text","label"=>"Net Monthly pay:")); ?>
 		<?php echo $this->Form->input("payfreq",array("options"=>array("Weekly"=>"Weekly","Bi-Weekly"=>"Bi-Weekly","Semi-Monthy"=>"Semi-Monthy","Monthly"=>"Monthly"),"empty"=>"Select value","label"=>"Pay frequency ")); ?>
 		<?php echo $this->Form->input("empcontact",array("type"=>"text","label"=>"Employer Contact Person:")); ?>
@@ -93,17 +96,18 @@ changeYear: true});
 		<?php echo $this->Form->input("Application.expenses.0",array("label"=>false,"div"=>false,"class"=>"assets2")); ?>
 	</div>
 	<a href="javascript:void(0);" id="expense_1" class="addexpense">Add More</a>
-		
+		<div class="clear">&nbsp;</div>
 	<input type="button" value="Save & Continue" id="step5"/>
 	</div>
 <div id="terms" class="tab5">Acceptance of Terms</div>
 	<div id="terms_cont" class="info hide">
-		<?php echo $this->Form->input("term1",array("type"=>"checkbox","id"=>"term1","label"=>false,"div"=>false)); ?><label for="term1">By ticking here you consent to us contacting you by regular mail, e-mail, telephone, and automated message and/or passing your application to trusted third parties as described in our Privacy Policy.</label>
+		<?php echo $this->Form->input("term1",array("type"=>"checkbox","id"=>"term1","label"=>false,"div"=>false)); ?><label for="term1">By ticking here you consent to us contacting you by regular mail, e-mail, telephone, and automated message and/or passing your application to trusted third parties as described in our Privacy Policy.</label><br/>
 		<label id="term1_error" class="error hide"></label>
-		<br/><hr/><br/>
-		<label>Please read our Privacy Policy. We regret we cannot approve your personal loan until you check the box to confirm you have read this document. *</label>
-		<?php echo $this->Form->input("term2",array("type"=>"checkbox","id"=>"term2","label"=>false,"div"=>false)); ?><label for="term2">I have read the Privacy Policy. Also, By checking this box next I authorize Creditloans Canada Financing Inc. or any agent we assign the contract to, to obtain a credit bureau report containing credit information or personal information about you. You authorize us to obtain information about you from third parties including employers and landlords and verify information with them. Creditloans Canada Financing Inc. may disclose to other credit grantors or to credit bureau agencies the information we obtain as a result of your credit approval process.</label>
+		<br/><hr/><br/><br/>
+		<label>Please read our Privacy Policy. We regret we cannot approve your personal loan until you check the box to confirm you have read this document. *</label><br/><br/>
+		<?php echo $this->Form->input("term2",array("type"=>"checkbox","id"=>"term2","label"=>false,"div"=>false)); ?><label for="term2">I have read the Privacy Policy. Also, By checking this box next I authorize Creditloans Canada Financing Inc. or any agent we assign the contract to, to obtain a credit bureau report containing credit information or personal information about you. You authorize us to obtain information about you from third parties including employers and landlords and verify information with them. Creditloans Canada Financing Inc. may disclose to other credit grantors or to credit bureau agencies the information we obtain as a result of your credit approval process.</label><br/>
 		<label id="term2_error" class="error hide"></label>
 	</div>
 <?php echo $this->Form->submit("Complete Step"); ?>
 <?php echo $this->Form->end(); ?>
+</section>

@@ -30,6 +30,10 @@ class Userdetail extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'StreetType'=>array(
+			'className'=>'StreetType',
+			'foreignkey'=>'street_type_id'
 		)
 	);
 }

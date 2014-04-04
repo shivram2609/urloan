@@ -74,7 +74,10 @@ p {
 
 /** Layout **/
 #container {
-	text-align: left;
+	margin: auto;
+    max-width: 1200px;
+    text-align: left;
+    width: 96%;
 }
 
 #header{
@@ -118,8 +121,7 @@ div.form,
 div.index,
 div.view {
 	float:right;
-	width:76%;
-	border-left:1px solid #666;
+	width: 96% !important;
 	padding:10px 2%;
 }
 div.actions {
@@ -261,7 +263,7 @@ form {
 	clear: both;
 	margin-right: 20px;
 	padding: 0;
-	width: 95%;
+	
 }
 fieldset {
 	border: none;
@@ -270,7 +272,7 @@ fieldset {
 }
 fieldset legend {
 	color: #e32;
-	font-size: 160%;
+	font-size:20px;
 	font-weight: bold;
 }
 fieldset fieldset {
@@ -286,10 +288,11 @@ fieldset fieldset div {
 	margin: 0 20px;
 }
 form div {
-	clear: both;
 	margin-bottom: 1em;
 	padding: .5em;
 	vertical-align: text-top;
+        float:left;
+
 }
 form .input {
 	color: #444;
@@ -311,24 +314,26 @@ label {
 	display: block;
 	font-size: 110%;
 	margin-bottom:3px;
-}
+        }
 input, textarea {
 	clear: both;
-	font-size: 140%;
 	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
-	padding: 1%;
-	width:98%;
+	border: 1px solid #CCCCCC; padding: 2px 3px;
+	width:300px;
 }
 select {
-	clear: both;
-	font-size: 120%;
-	vertical-align: text-bottom;
+	border: 1px solid #CCCCCC;
+        height: 23px;
+        line-height: 23px;
+        padding: 2px 3px;
+        vertical-align: text-bottom;
+        width: 300px;
 }
 select[multiple=multiple] {
 	width: 100%;
 }
 option {
-	font-size: 120%;
+	
 	padding: 0 3px;
 }
 input[type=checkbox] {
@@ -343,7 +348,7 @@ div.checkbox label {
 input[type=radio] {
 	float:left;
 	width:auto;
-	margin: 6px 0;
+	margin: 1px 5px 0 0;
 	padding: 0;
 	line-height: 26px;
 }

@@ -266,6 +266,7 @@ $(document).ready(function(){
 	*/
 	$("#step1").click(function(){ 
 		if ($(this).step1()) {
+			$("div.tab0").addClass("tab");
 			$("div.tab1").addClass("tab");
 			$("#pers_cont").slideUp("1000");
 			$("#contact_cont").slideDown("1000");
@@ -282,47 +283,60 @@ $(document).ready(function(){
 	
 	$.fn.step3 = function(){
 		var err_count_step3 = 0;
-		if ($("#ApplicationStreetNumber").val() == '') {
+		if ($("#UserdetailStreetUnit").val() == '') {
 			++err_count_step3;
-			$("#ApplicationStreetNumber_error").html("Please enter street number.");
-			$("#ApplicationStreetNumber_error").show();
-			$("#ApplicationStreetNumber_error").focus();
+			$("#UserdetailStreetUnit_error").html("Please enter street unit.");
+			$("#UserdetailStreetUnit_error").show();
+			$("#UserdetailStreetUnit_error").focus();
+		} else if(parseInt($("#UserdetailStreetUnit").val())+0 != $("#UserdetailStreetUnit").val()  ) {
+			++err_count_step3;
+			$("#UserdetailStreetUnit_error").html("Please enter valid number.");
+			$("#UserdetailStreetUnit_error").show();
+			$("#UserdetailStreetUnit_error").focus();
 		} else {
-			$("#ApplicationStreetNumber_error").hide();
+			$("#UserdetailStreetUnit_error").hide();
 		}
-		if ($("#ApplicationStreetName").val() == '') {
+		if ($("#UserdetailStreetNumber").val() == '') {
 			++err_count_step3;
-			$("#ApplicationStreetName_error").html("Please enter street name.");
-			$("#ApplicationStreetName_error").show();
-			$("#ApplicationStreetName_error").focus();
+			$("#UserdetailStreetNumber_error").html("Please enter street number.");
+			$("#UserdetailStreetNumber_error").show();
+			$("#UserdetailStreetNumber_error").focus();
 		} else {
-			$("#ApplicationStreetName_error").hide();
+			$("#UserdetailStreetNumber_error").hide();
 		}
-		if ($("#ApplicationStreetType").val() == '') {
+		if ($("#UserdetailStreetName").val() == '') {
 			++err_count_step3;
-			$("#ApplicationStreetType_error").html("Please enter street type.");
-			$("#ApplicationStreetType_error").show();
-			$("#ApplicationStreetType_error").focus();
+			$("#UserdetailStreetName_error").html("Please enter street name.");
+			$("#UserdetailStreetName_error").show();
+			$("#UserdetailStreetName_error").focus();
 		} else {
-			$("#ApplicationStreetType_error").hide();
+			$("#UserdetailStreetName_error").hide();
+		}
+		if ($("#UserdetailStreetTypeId").val() == '') {
+			++err_count_step3;
+			$("#UserdetailStreetTypeId_error").html("Please enter street type.");
+			$("#UserdetailStreetTypeId_error").show();
+			$("#UserdetailStreetTypeId_error").focus();
+		} else {
+			$("#UserdetailStreetTypeId_error").hide();
 		}
 		
-		if ($("#ApplicationCity").val() == '') {
+		if ($("#UserdetailCity").val() == '') {
 			++err_count_step3;
-			$("#ApplicationCity_error").html("Please enter city.");
-			$("#ApplicationCity_error").show();
-			$("#ApplicationCity_error").focus();
+			$("#UserdetailCity_error").html("Please enter city.");
+			$("#UserdetailCity_error").show();
+			$("#UserdetailCity_error").focus();
 		} else {
-			$("#ApplicationCity_error").hide();
+			$("#UserdetailCity_error").hide();
 		}
 		
-		if ($("#ApplicationPostalCode").val() == '') {
+		if ($("#UserdetailPostalCode").val() == '') {
 			++err_count_step3;
-			$("#ApplicationPostalCode_error").html("Please enter postal code.");
-			$("#ApplicationPostalCode_error").show();
-			$("#ApplicationPostalCode_error").focus();
+			$("#UserdetailPostalCode_error").html("Please enter postal code.");
+			$("#UserdetailPostalCode_error").show();
+			$("#UserdetailPostalCode_error").focus();
 		} else {
-			$("#ApplicationPostalCode_error").hide();
+			$("#UserdetailPostalCode_error").hide();
 		}
 		if ($("#ApplicationTimeCurrAddress").val() == '') {
 			++err_count_step3;
@@ -332,21 +346,21 @@ $(document).ready(function(){
 		} else {
 			$("#ApplicationTimeCurrAddress_error").hide();
 		}
-		if ($("#ApplicationProvince").val() == '') {
+		if ($("#UserdetailProvince").val() == '') {
 			++err_count_step3;
-			$("#ApplicationProvince_error").html("Please enter province.");
-			$("#ApplicationProvince_error").show();
-			$("#ApplicationProvince_error").focus();
+			$("#UserdetailProvince_error").html("Please enter province.");
+			$("#UserdetailProvince_error").show();
+			$("#UserdetailProvince_error").focus();
 		} else {
-			$("#ApplicationProvince_error").hide();
+			$("#UserdetailProvince_error").hide();
 		}
-		if ($("#ApplicationResidentStatus").val() == '') {
+		if ($("#UserdetailResidentStatus").val() == '') {
 			++err_count_step3;
-			$("#ApplicationResidentStatus_error").html("Please select residential status.");
-			$("#ApplicationResidentStatus_error").show();
-			$("#ApplicationResidentStatus_error").focus();
+			$("#UserdetailResidentStatus_error").html("Please select residential status.");
+			$("#UserdetailResidentStatus_error").show();
+			$("#UserdetailResidentStatus_error").focus();
 		} else {
-			$("#ApplicationResidentStatus_error").hide();
+			$("#UserdetailResidentStatus_error").hide();
 		}
 		
 		if ($("#ApplicationRent").val() == '') {

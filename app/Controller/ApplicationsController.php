@@ -16,7 +16,7 @@ class ApplicationsController extends AppController {
 	public $components = array('Paginator');
 	
 	function beforeFilter() {
-		$this->layout = "default_old";
+		$this->layout = "default";
 		parent::beforeFilter();
 		$this->Auth->allow(array("login","signup","confirmuser"));
 	}
@@ -38,6 +38,7 @@ class ApplicationsController extends AppController {
 					$fraud['Fraud']['data'] = serialize($this->data);
 					$this->Fraud->save($fraud);
 					$this->Session->write("raw",$this->data);
+					$this->Session->setFlash("Congratulations you have been pre-qualified!",'default',array("class"=>"success_message"));
 				} else {
 					$this->loadModel("Fraud");
 					$fraud['Fraud']['user_id'] = $this->Session->read("Auth.User.id");
@@ -84,8 +85,8 @@ class ApplicationsController extends AppController {
 		$data_arr = array();
 		$data_arr = $this->Userdetail->find("first",array("conditions"=>array("Userdetail.user_id"=>$this->Session->read("Auth.User.id"))));
 		$this->loadModel("Agent");
-		$agents = $this->Agent->find("list",array("conditions"=>array("status"=>"1"),"fields"=>array("id","name")));
-		$agents["other"] = "Other";
+		//$agents = $this->Agent->find("list",array("conditions"=>array("status"=>"1"),"fields"=>array("id","name")));
+		//$agents["other"] = "Other";
 		if(isset($this->data) && !empty($this->data) && !empty($id)){
 			$data = $this->data;
 			$data['Application']['user_id'] = $this->Session->read("Auth.User.id");
@@ -129,10 +130,12 @@ class ApplicationsController extends AppController {
 			//pr($datas);
 			$this->data = $datas;
 		}
-		$this->set(compact("agents"));
+		//$this->set(compact("agents"));
 		$this->loadModel('Province');
 		$provinces = $this->Province->find("list",array("fields"=>array("Province.id","Province.name")));
-		$this->set(compact("provinces"));
+		$this->loadModel("StreetType");
+		$streettypes = $this->StreetType->find("list",array("conditions"=>array("status"=>1),"fields"=>array("StreetType.id","StreetType.heading")));
+		$this->set(compact("provinces","streettypes"));
 	}
 	
 	function addDocuments($applicationid = null) {

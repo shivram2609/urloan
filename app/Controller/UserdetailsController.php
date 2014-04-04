@@ -68,13 +68,12 @@ class UserdetailsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-	$this->layout = "default_old";
 		if (!$this->Userdetail->exists($id)) {
 			throw new NotFoundException(__('Invalid userdetail'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Userdetail->save($this->request->data)) {
-				$this->Session->setFlash(__('The userdetail has been saved.'));
+				$this->Session->setFlash(__('The userdetail has been saved.'),'default',array('class'=>'success_message'));
 				$this->redirect("/profile");
 			} else {
 				$this->Session->setFlash(__('The userdetail could not be saved. Please, try again.'));
@@ -86,7 +85,9 @@ class UserdetailsController extends AppController {
 		}
 		$users = $this->Userdetail->User->find('list');
 		$provinces = $this->Userdetail->Province->find('list');
-		$this->set(compact('users', 'provinces'));
+		$this->loadModel("StreetType");
+		$streettypes = $this->StreetType->find("list",array("conditions"=>array("status"=>1),"fields"=>array("StreetType.id","StreetType.heading")));
+		$this->set(compact('users', 'provinces',"streettypes"));
 		
 	}
 

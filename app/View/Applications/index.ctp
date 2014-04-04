@@ -1,5 +1,7 @@
-<div class="applications index" style="width:99%;">
-	<h2><?php echo __('Applications'); ?></h2>
+<?php echo $this->element("left_navigation"); ?>
+<section class="right-panel">
+<h1>My Applications</h1>
+	<div class="applications index" style="width:99%;">
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('amount'); ?></th>
@@ -51,4 +53,5 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
-</div>
+	</div>
+</section>

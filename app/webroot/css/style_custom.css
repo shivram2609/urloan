@@ -1,14 +1,17 @@
-div.tab{float: left; border: 1px solid; width: 100%; background: #003D4C; color: #EEE; font-weight: bold; font-size: 16px; cursor: pointer;}
+div.tab{float: left; border: 1px solid; width: 100%; background: #003D4C; color: #EEE; font-weight: bold; font-size: 16px; cursor: pointer; padding:10px;}
 div.tab1,.tab2,.tab3,.tab4,.tab5,.tab0{float: left; border: 1px solid; width: 100%; background: #003D4C; color: #EEE; font-weight: bold; font-size: 16px; cursor: pointer;}
 .hide {display:none;}
-label.error{color: #E51E1E; padding: 5px 0 !important; font-size: 12px !important; font-weight: normal !important;}
+label.error{color: #E51E1E !important; padding: 5px 0 !important; font-size: 12px !important; font-weight: normal !important;}
 input.assets1{float:left;width:45%;clear:none;margin-top:10px;}
 input.assets2{float:right;width:45%;clear:none;margin-top:10px;}
 .progress-bar {
-    float: left;
+   
     width: 100%;
 	padding: 20px 0;
 	font-weight:bold;
+display: inline-block;
+text-align:center;
+font-size: 15px;
 }
 .progress-bar ul{
     float: left;
@@ -16,9 +19,23 @@ input.assets2{float:right;width:45%;clear:none;margin-top:10px;}
     width: 100%;
 }
 .progress-bar ul li{
+    color: #AF1632;
     float: left;
     list-style: none outside none;
-	color: #AF1632;
+    padding: 0 0;
+    width: 25%;
+}
+.progress-bar ul li span{
+   background:#F6F2EF;
+    border: 1px solid #CCCCCC;
+    border-radius: 50%;
+    display: block;
+    font-size: 13px;
+    height: 50px;
+    line-height: 50px;
+    margin: auto;
+    text-align: center;
+    width: 50px;
 }
 .progress-bar ul li.active{
     float: left;
@@ -43,10 +60,36 @@ div.confirm_app{float:left;width:100%;display:inline-block;}
 div.confirm_app p{float:left;display:inline-block;line-height:20px;font-size:15px;font-weight:bold;}
 .headerext{border-bottom: 2px solid;
     margin: 0 0 20px;}
-section.left_cont {float:left; width:25%;}
-section.right_cont {float:right; width:75%;}
+section.right_cont { border-left: 1px solid #CCCCCC;  float: right;  padding: 0 0 0 20px;  width: 70%;}
 
 section.right_cont label {line-height:40px;color:#626262;}
 section.right_cont label.header {float:left; width:35%;font-weight:bold;}
 section.right_cont label.cont {float:left; width:65%}
 div.separator {border-bottom:1px dashed;float:left;display:inline-block;height:1px;width:100%;}
+div.success_message{ background-color: #D7E2D3;
+    border: 2px solid #256B07;
+    border-radius: 5px;
+    color: #1C5603;
+    float: left;
+    font-weight: bold;
+    margin: 0 0 30px;
+    padding: 10px;
+    width: 100%;}
+div.message{ background-color: #EDDCDA;
+    border: 2px solid #B21905;
+    border-radius: 5px;
+    color: #B21905;
+    float: left;
+    font-weight: bold;
+    margin: 0 0 30px;
+    padding: 10px;
+    width: 100%;}
+div.back{background-color: #000000;
+    display: inline-block;
+    height: 488%;
+    left: 0;
+    opacity: 0.46;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2147483647;}
