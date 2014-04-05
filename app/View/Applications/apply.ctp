@@ -36,7 +36,7 @@ $( "#ApplicationAmount" ).val( $( "#slider-range-min" ).slider( "value" ) );
 <div id="qualify" class="tab">Qualify</div>
 <div id="qualify_cont" class="info">
 	<h2>We have some basic requirements in order to pre-qualify for a loan, please answer the following several questions so we can determine if our product is the right fit for you:</h2>
-	<p>Fields marked <em style="color:red;">*</em> sign are mandatory.</P>
+	<p style="font-size: 12px;">Fields denoted with <em style="color:red;">*</em> sign are mandatory.</p>
 	<?php 
 	echo $this->Form->input("Userdetail.province_id",array("options"=>$provinces,"empty"=>"Please select province","class"=>"validate"));
 	echo $this->Form->input('Userdetail.birth_date',array("type"=>"text",'readonly'));
@@ -44,7 +44,7 @@ $( "#ApplicationAmount" ).val( $( "#slider-range-min" ).slider( "value" ) );
 	?>
 
 	<?php //echo $this->Form->input("amount",array("options"=>$loanamount,"empty"=>"Select an amount","label"=>"How much would you like to borrow?<br/>Loan amount $1,000-$15,000","class"=>"validate")); ?>
-	<?php echo $this->Form->input("amount",array("empty"=>"Select an amount","label"=>"How much would you like to borrow?<br/>Loan amount $1,000-$15,000","class"=>"validate","readonly"=>true)); ?>
+	<?php echo $this->Form->input("amount",array("empty"=>"Select an amount","label"=>"How much would you like to borrow?<br/>Loan amount $1,000-$15,000","class"=>"validate")); ?>
 	<div id="slider-range-min"></div>
 	<?php echo $this->Form->input("purpose",array("options"=>array(""=>"I require money for:","Debt Consolidation"=>"Debt Consolidation","Unexpected Expenses"=>"Unexpected Expenses","Starting a Business"=>"Starting a Business","Paying off a Collection Agency"=>"Paying off a Collection Agency","A Vacation"=>"A Vacation","A New Car"=>"A New Car","A Home Renovation"=>"A Home Renovation","Other Reasons"=>"Other Reasons"),"label"=>"Purpose of your loan:","class"=>"validate")); ?>
 	<?php echo $this->Form->input("terms",array("options"=>$terms,"label"=>"Term 6-36 months")); ?>

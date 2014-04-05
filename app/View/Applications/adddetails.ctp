@@ -2,7 +2,7 @@
 <?php echo $this->Html->script("jquery.ui"); ?>
  <script>
 $(function() {
-$( "#ApplicationEmptime" ).datepicker({changeMonth: true,
+$( "#ApplicationEmptime,#ApplicationLastPay,#ApplicationNextPay" ).datepicker({changeMonth: true,
 changeYear: true,yearRange: '1950:2014'});
 });
 </script>
@@ -10,7 +10,7 @@ changeYear: true,yearRange: '1950:2014'});
 <?php echo $this->element("left_navigation"); ?>
 <section class="right-panel">
 <h1>Evaluate</h1>
-<p>Fields marked <em style="color:red;">*</em> sign are mandatory.</P>
+<p style="font-size: 12px;">Fields denoted with <em style="color:red;">*</em> sign are mandatory.</p>
 <?php echo $this->Form->create("Application"); ?>
 <div id="pers" class="tab0">Personal Details</div>
 <div id="pers_cont" class="info">
@@ -38,6 +38,9 @@ changeYear: true,yearRange: '1950:2014'});
 			echo $this->Form->input('Userdetail.work_phone_extension');
 			echo $this->Form->input('Userdetail.home_phone',array("class"=>"validate"));
 			echo $this->Form->input('Userdetail.mobile_phone',array("class"=>"validate"));
+			echo $this->Form->input('Userdetail.mobile_phone',array("class"=>"validate"));
+			echo $this->Form->input('Userdetail.primary_email',array("class"=>"validate"));
+			echo $this->Form->input('Userdetail.work_email',array("label"=>"Work Emal(If Applicable)","class"=>"non-validate"));
 		?>
 		<input type="button" value="Save & Continue" id="step2"/>
 	</div>
@@ -52,22 +55,48 @@ changeYear: true,yearRange: '1950:2014'});
 		echo $this->Form->input('Userdetail.city',array("class"=>"validate"));
 		echo $this->Form->input('Userdetail.postal_code',array("class"=>"validate","label"=>"Postal code","placeholder"=>"e.g T5G 1X3"));
 		echo $this->Form->input('rent',array("class"=>"validate","label"=>"Monthly Mortgage or Rent(Amount $)"));
-		echo $this->Form->input("time_curr_address",array("options"=>array("6 months"=>"6 Months","1 year"=>"1 Year","1+ years"=>"1+ Years"),"class"=>"validate","label"=>"Time at current address"));
+		echo $this->Form->input("time_curr_address",array("options"=>$addresscount,'empty'=>'Select time of address',"class"=>"validate","label"=>"Time at current address"));
 		echo $this->Form->input('Userdetail.province',array("options"=>$provinces,"class"=>"validate","label"=>"Province in Canada"));
 		echo $this->Form->input("Userdetail.resident_status",array("options"=>array("Tenant"=>"Tenant","Owner"=>"Owner"),"empty"=>"Select residential status","label"=>"Residential Status","class"=>"validate"));
 	?>
+	<?php if($this->data['Application']['time_curr_address'] < 2) { ?>
+	<div class="prior-address">
+	<?php } else { ?>
+		<div class="hide prior-address">
+	<?php } ?>
+	<label class="address_separator">Prior Address</label>
+	<?php
+		echo $this->Form->input("Userdetail.street_number1",array("class"=>"validate","label"=>"Street Number"));
+		echo $this->Form->input("Userdetail.street_name1",array("class"=>"validate","label"=>"Street Name"));
+		echo $this->Form->input("Userdetail.street_unit1",array("class"=>"validate","label"=>"Unit"));
+		echo $this->Form->input("Userdetail.street_type_id1",array("options"=>$streettypes,"empty"=>"Select street type","class"=>"validate","label"=>"Street type"));
+		echo $this->Form->input("Userdetail.street_direction",array("class"=>"validate","label"=>"Direction"));
+		echo $this->Form->input('Userdetail.city1',array("class"=>"validate"));
+		echo $this->Form->input('Userdetail.postal_code1',array("class"=>"validate","label"=>"Postal code","placeholder"=>"e.g T5G 1X3"));
+		echo $this->Form->input('rent1',array("class"=>"validate","label"=>"Monthly Mortgage or Rent(Amount $)"));
+		echo $this->Form->input("time_curr_address1",array("options"=>$addresscount,'empty'=>'Select time of address',"class"=>"validate","label"=>"Time at prior address"));
+		echo $this->Form->input('Userdetail.province1',array("options"=>$provinces,"class"=>"validate","label"=>"Province in Canada"));
+		echo $this->Form->input("Userdetail.resident_status1",array("options"=>array("Tenant"=>"Tenant","Owner"=>"Owner"),"empty"=>"Select residential status","label"=>"Residential Status","class"=>"validate"));
+	?>
+	</div>
 	<input type="button" value="Save & Continue" id="step3"/>
 	</div>
 
 <div id="emp" class="tab3">Your employment details</div>
 	<div id="emp_cont" class="info hide">
-		<?php echo $this->Form->input("company",array("type"=>"text")); ?>
-		<?php echo $this->Form->input("position",array("type"=>"text")); ?>
-		<?php echo $this->Form->input("empmainline",array("type"=>"text","label"=>"Employer main phone line")); ?>
-		<?php echo $this->Form->input("emptime",array("type"=>"text","label"=>"Start date at current employer:","readonly"=>true)); ?>
-		<?php echo $this->Form->input("pay",array("type"=>"text","label"=>"Net Monthly pay:")); ?>
-		<?php echo $this->Form->input("payfreq",array("options"=>array("Weekly"=>"Weekly","Bi-Weekly"=>"Bi-Weekly","Semi-Monthy"=>"Semi-Monthy","Monthly"=>"Monthly"),"empty"=>"Select value","label"=>"Pay frequency ")); ?>
-		<?php echo $this->Form->input("empcontact",array("type"=>"text","label"=>"Employer Contact Person:")); ?>
+		<?php echo $this->Form->input("empstatus",array("options"=>array("Full-Time employed"=>"Full-Time employed","Part-time employed"=>"Part-time employed","Temporary employment"=>"Temporary employment","Self employed"=>"Self employed","Unemployed"=>"Unemployed","Student"=>"Student","Home maker"=>"Home maker","Pension"=>"Pension","Disability benefit"=>"Disability benefit"),"empty"=>"Select Employee Status","label"=>"Employee Status","class"=>"validate")); ?>
+		<?php echo $this->Form->input("curr_comp_time",array("type"=>"text","label"=>"Time at Current Employer (Months)","class"=>"validate")); ?>
+		<?php echo $this->Form->input("company",array("type"=>"text","class"=>"validate")); ?>
+		<?php echo $this->Form->input("pay",array("type"=>"text","class"=>"validate","label"=>"Net Monthly Pay")); ?>
+		<?php echo $this->Form->input("position",array("type"=>"text","class"=>"validate")); ?>
+		<?php echo $this->Form->input("payfreq",array("options"=>array("Weekly"=>"Weekly","Bi-Weekly"=>"Bi-Weekly","Semi-Monthy"=>"Semi-Monthy","Monthly"=>"Monthly"),"empty"=>"Select value","label"=>"Pay frequency ","class"=>"validate")); ?>
+		<?php echo $this->Form->input("empmainline",array("type"=>"text","label"=>"Employer main phone line","class"=>"validate")); ?>
+		<?php echo $this->Form->input("empcontact",array("type"=>"text","label"=>"Employer Contact Person:","class"=>"validate")); ?>
+		<?php echo $this->Form->input("emptime",array("type"=>"text","label"=>"Start date at current employer:","readonly"=>true,"class"=>"validate")); ?>
+		<?php echo $this->Form->input("pay_days",array("options"=>array("Before"=>"Before","After"=>"After"),"empty"=>"select value","label"=>"Do your pay days typically fall before or after a holiday? ","class"=>"validate")); ?>
+		<?php echo $this->Form->input("how_paid",array("options"=>array("Cash"=>"Cash","Cheque"=>"Cheque","Direct Deposit"=>"Direct Deposit"),"empty"=>"select value","label"=>"How are you paid?","class"=>"validate")); ?>
+		<?php echo $this->Form->input("last_pay",array("type"=>"text","label"=>"Last pay date","readonly"=>true,"class"=>"validate")); ?>
+		<?php echo $this->Form->input("next_pay",array("type"=>"text","label"=>"Next pay date","readonly"=>true,"class"=>"validate")); ?>
 		<input type="button" value="Save & Continue" id="step4"/>
 	</div>
 <div id="finan" class="tab4">Additional Financial Disclosure</diV>
@@ -75,24 +104,24 @@ changeYear: true,yearRange: '1950:2014'});
 	<label style="font-weight: bold;">List your assets below (Home, Car, Jewellery, Furniture, etc.)</label>
 	<div style="float:left; width:100%" id="assetscont">
 	<label style="float: left; width: 53%;">Assets name</label><label style="float: left; width: 45%;">Dollar value</label>
-		<?php echo $this->Form->input("Application.assetsline.0",array("label"=>false,"div"=>false,"class"=>"assets1")); ?>
+		<?php echo $this->Form->input("Application.assetsline.0",array("label"=>false,"div"=>false,"class"=>"assets1","placeholder"=>"Home, Car, Jewelry, Furniture, etc.")); ?>
 		<?php echo $this->Form->input("Application.assets.0",array("label"=>false,"div"=>false,"class"=>"assets2")); ?>
 	</div>
 		<a href="javascript:void(0);" id="asset_1" class="addasset">Add More</a>
 	
-	<label style="font-weight: bold; margin-top: 20px;">List your liabilities by name (please separate by line):</label>
+	<label style="font-weight: bold; margin-top: 20px;">List your liabilities below (Payday loans, Visa, Mastercard, Auto Loan, etc.):</label>
 	<div style="float:left; width:100%" id="liabilitiescont">
 	<label style="float: left; width: 53%;">Liability name</label><label style="float: left; width: 45%;">Dollar value</label>
-		<?php echo $this->Form->input("Application.liabilityline.0",array("label"=>false,"div"=>false,"class"=>"assets1")); ?>
+		<?php echo $this->Form->input("Application.liabilityline.0",array("label"=>false,"div"=>false,"class"=>"assets1","placeholder"=>"Payday loans, Visa, Mastercard, Auto Loan, etc.")); ?>
 		<?php echo $this->Form->input("Application.liabilities.0",array("label"=>false,"div"=>false,"class"=>"assets2")); ?>
 	</div>
 	<a href="javascript:void(0);" id="liability_1" class="addliability">Add More</a>
 	
 	
-	<label style="font-weight: bold; margin-top: 20px;">List Monthly Expenses by name (please separate by line):</label>
+	<label style="font-weight: bold; margin-top: 20px;">List Monthly Expenses (Rent, Transportation, Gas, Insurance, Cell phone, etc.):</label>
 	<div style="float:left; width:100%" id="expensescont">
 	<label style="float: left; width: 53%;">Expenses name</label><label style="float: left; width: 45%;">Dollar value</label>
-		<?php echo $this->Form->input("Application.expenselist.0",array("label"=>false,"div"=>false,"class"=>"assets1")); ?>
+		<?php echo $this->Form->input("Application.expenselist.0",array("label"=>false,"div"=>false,"class"=>"assets1","placeholder"=>"Rent, Transportation, Gas, Insurance, Cell phone, etc.")); ?>
 		<?php echo $this->Form->input("Application.expenses.0",array("label"=>false,"div"=>false,"class"=>"assets2")); ?>
 	</div>
 	<a href="javascript:void(0);" id="expense_1" class="addexpense">Add More</a>

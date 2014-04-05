@@ -73,6 +73,7 @@ class ApplicationsController extends AppController {
 		for($j=1000;$j<=15000;$j += 500) {
 			$loanamount[$j] = $j;
 		}
+		
 		$this->set(compact("terms","loanamount"));
 		$this->data = $data_arr;
 		$this->loadModel("Province");
@@ -135,7 +136,13 @@ class ApplicationsController extends AppController {
 		$provinces = $this->Province->find("list",array("fields"=>array("Province.id","Province.name")));
 		$this->loadModel("StreetType");
 		$streettypes = $this->StreetType->find("list",array("conditions"=>array("status"=>1),"fields"=>array("StreetType.id","StreetType.heading")));
-		$this->set(compact("provinces","streettypes"));
+		$addresscount[0] = 'Less than 1 Year';
+		$addresscount[1] = '1 Year';
+		for($ac = 2;$ac <= 20 ; $ac++) {
+			$addresscount[$ac] = $ac." Years";
+		}
+		$addresscount[21] = '20+ Years';
+		$this->set(compact("provinces","streettypes",'addresscount'));
 	}
 	
 	function addDocuments($applicationid = null) {

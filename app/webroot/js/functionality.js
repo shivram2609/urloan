@@ -14,6 +14,9 @@ $(document).ready(function(){
 			$(this).prev("label").html($(this).prev("label").html() + "<em style='color:red;'>*<em>");
 			$(this).after('<label id = "'+$(this).attr("id")+'_error" class="hide error"></label>');
 		}
+		if($(this).hasClass("non-validate")){
+			$(this).after('<label id = "'+$(this).attr("id")+'_error" class="hide error"></label>');
+		}
 	});
 		
 	$(".tab").live("click",function(){
@@ -113,6 +116,23 @@ $(document).ready(function(){
 			$("#UserdetailMobilePhone_error").focus();
 		} else {
 			$("#UserdetailMobilePhone_error").hide();
+		}
+		
+		if (!$(this).validate_email($("#UserdetailPrimaryEmail").val())) {
+			++err_count_step2;
+			$("#UserdetailPrimaryEmail_error").html("Please enter valid email address.");
+			$("#UserdetailPrimaryEmail_error").show();
+			$("#UserdetailPrimaryEmail_error").focus();
+		} else {
+			$("#UserdetailPrimaryEmail_error").hide();
+		}
+		if ($("#UserdetailWorkEmail").val() != '' && !$(this).validate_email($("#UserdetailWorkEmail").val())) {
+			++err_count_step2;
+			$("#UserdetailWorkEmail_error").html("Please enter valid email address.");
+			$("#UserdetailWorkEmail_error").show();
+			$("#UserdetailWorkEmail_error").focus();
+		} else {
+			$("#UserdetailWorkEmail_error").hide();
 		}
 		
 		if (err_count_step2 == 0) {
@@ -376,6 +396,102 @@ $(document).ready(function(){
 		} else {
 			$("#ApplicationRent_error").hide();
 		}
+		if($("#ApplicationTimeCurrAddress").val() < 2) {
+			$(".prior-address").show();
+			if ($("#UserdetailStreetUnit1").val() == '') {
+				++err_count_step3;
+				$("#UserdetailStreetUnit1_error").html("Please enter street unit.");
+				$("#UserdetailStreetUnit1_error").show();
+				$("#UserdetailStreetUnit1_error").focus();
+			} else if(parseInt($("#UserdetailStreetUnit1").val())+0 != $("#UserdetailStreetUnit1").val()  ) {
+				++err_count_step3;
+				$("#UserdetailStreetUnit1_error").html("Please enter valid number.");
+				$("#UserdetailStreetUnit1_error").show();
+				$("#UserdetailStreetUnit1_error").focus();
+			} else {
+				$("#UserdetailStreetUnit1_error").hide();
+			}
+			if ($("#UserdetailStreetNumber1").val() == '') {
+				++err_count_step3;
+				$("#UserdetailStreetNumber1_error").html("Please enter street number.");
+				$("#UserdetailStreetNumber1_error").show();
+				$("#UserdetailStreetNumber1_error").focus();
+			} else {
+				$("#UserdetailStreetNumber1_error").hide();
+			}
+			if ($("#UserdetailStreetName1").val() == '') {
+				++err_count_step3;
+				$("#UserdetailStreetName1_error").html("Please enter street name.");
+				$("#UserdetailStreetName1_error").show();
+				$("#UserdetailStreetName1_error").focus();
+			} else {
+				$("#UserdetailStreetName1_error").hide();
+			}
+			if ($("#UserdetailStreetTypeId1").val() == '') {
+				++err_count_step3;
+				$("#UserdetailStreetTypeId1_error").html("Please enter street type.");
+				$("#UserdetailStreetTypeId1_error").show();
+				$("#UserdetailStreetTypeId1_error").focus();
+			} else {
+				$("#UserdetailStreetTypeId1_error").hide();
+			}
+			
+			if ($("#UserdetailCity1").val() == '') {
+				++err_count_step3;
+				$("#UserdetailCity1_error").html("Please enter city.");
+				$("#UserdetailCity1_error").show();
+				$("#UserdetailCity1_error").focus();
+			} else {
+				$("#UserdetailCity1_error").hide();
+			}
+			
+			if ($("#UserdetailPostalCode1").val() == '') {
+				++err_count_step3;
+				$("#UserdetailPostalCode1_error").html("Please enter postal code.");
+				$("#UserdetailPostalCode1_error").show();
+				$("#UserdetailPostalCode1_error").focus();
+			} else {
+				$("#UserdetailPostalCode1_error").hide();
+			}
+			if ($("#ApplicationTimeCurrAddress1").val() == '') {
+				++err_count_step3;
+				$("#ApplicationTimeCurrAddress1_error").html("Please enter time at current address.");
+				$("#ApplicationTimeCurrAddress1_error").show();
+				$("#ApplicationTimeCurrAddress1_error").focus();
+			} else {
+				$("#ApplicationTimeCurrAddress1_error").hide();
+			}
+			if ($("#UserdetailProvince1").val() == '') {
+				++err_count_step3;
+				$("#UserdetailProvince1_error").html("Please enter province.");
+				$("#UserdetailProvince1_error").show();
+				$("#UserdetailProvince1_error").focus();
+			} else {
+				$("#UserdetailProvince1_error").hide();
+			}
+			if ($("#UserdetailResidentStatus1").val() == '') {
+				++err_count_step3;
+				$("#UserdetailResidentStatus1_error").html("Please select residential status.");
+				$("#UserdetailResidentStatus1_error").show();
+				$("#UserdetailResidentStatus1_error").focus();
+			} else {
+				$("#UserdetailResidentStatus1_error").hide();
+			}
+			
+			if ($("#ApplicationRent1").val() == '') {
+				++err_count_step3;
+				$("#ApplicationRent1_error").html("Please enter rent.");
+				$("#ApplicationRent1_error").show();
+				$("#ApplicationRent1_error").focus();
+			} else if(parseFloat($("#ApplicationRent1").val())+0 != $("#ApplicationRent1").val()  ) {
+				++err_count_step3;
+				$("#ApplicationRent1_error").html("Please enter valid amount.");
+				$("#ApplicationRent1_error").show();
+				$("#ApplicationRent1_error").focus();
+			} else {
+				$("#ApplicationRent1_error").hide();
+			}
+		}
 		if (err_count_step3 == 0) {
 			return true;
 		} else {
@@ -383,7 +499,13 @@ $(document).ready(function(){
 		}
 		
 	}
-	
+	$("#ApplicationTimeCurrAddress").live("change",function(){
+		if($(this).val() < 2 ){
+			$(".prior-address").show();
+		} else {
+			$(".prior-address").hide();
+		}
+	});
 	$("#step3").click(function(){
 		if($(this).step3()) {
 			$("div.tab3").addClass("tab");
@@ -392,10 +514,148 @@ $(document).ready(function(){
 		}
 	});
 	
+	$.fn.checknumber = function(number) {
+		var checknumber = parseFloat(number)+0;
+		if( !isNaN(checknumber) && checknumber == number) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	$.fn.step4 = function(){
+		var err_count_step4 = 0;
+		if ($("#ApplicationEmpstatus").val() == '') {
+		alert("here");
+			++err_count_step4;
+			$("#ApplicationEmpstatus_error").html("Please select employee status.");
+			$("#ApplicationEmpstatus_error").show();
+			$("#ApplicationEmpStatus").focus();
+		} else {
+			$("#ApplicationEmpStatus_error").hide();
+		}
+		if ($("#ApplicationCurrCompTime").val() == '') {
+			++err_count_step4;
+			$("#ApplicationCurrCompTime_error").html("Please enter current company time.");
+			$("#ApplicationCurrCompTime_error").show();
+			$("#ApplicationCurrCompTime_error").focus();
+		} else if(!$(this).checknumber($("#ApplicationCurrCompTime").val())) {
+			++err_count_step4;
+			$("#ApplicationCurrCompTime_error").html("Please enter valid current company time.");
+			$("#ApplicationCurrCompTime_error").show();
+			$("#ApplicationCurrCompTime_error").focus();
+		} else {
+			$("#ApplicationEmpStatus_error").hide();
+		}
+		if ($("#ApplicationCompany").val() == '') {
+			++err_count_step4;
+			$("#ApplicationCompany_error").html("Please enter company.");
+			$("#ApplicationCompany_error").show();
+			$("#ApplicationCompany_error").focus();
+		} else {
+			$("#ApplicationCompany_error").hide();
+		}
+		if ($("#ApplicationPay").val() == '') {
+			++err_count_step4;
+			$("#ApplicationPay_error").html("Please enter monthly pay.");
+			$("#ApplicationPay_error").show();
+			$("#ApplicationPay_error").focus();
+		} else if(!$(this).checknumber($("#ApplicationPay").val())) {
+			++err_count_step4;
+			$("#ApplicationPay_error").html("Please enter valid monthly pay.");
+			$("#ApplicationPay_error").show();
+			$("#ApplicationPay_error").focus();
+		} else {
+			$("#ApplicationPay_error").hide();
+		}
+		if ($("#ApplicationPosition").val() == '') {
+			++err_count_step4;
+			$("#ApplicationPosition_error").html("Please enter position.");
+			$("#ApplicationPosition_error").show();
+			$("#ApplicationPosition").focus();
+		} else {
+			$("#ApplicationPosition_error").hide();
+		}
+		if ($("#ApplicationPayfreq").val() == '') {
+			++err_count_step4;
+			$("#ApplicationPayfreq_error").html("Please enter pay frequency.");
+			$("#ApplicationPayfreq_error").show();
+			$("#ApplicationPayfreq").focus();
+		} else {
+			$("#ApplicationPayfreq_error").hide();
+		}
+		if ($("#ApplicationEmpmainline").val() == '' || !$(this).checkphone($("#ApplicationEmpmainline").val())) {
+			++err_count_step4;
+			$("#ApplicationEmpmainline_error").html("Please enter valid phone number.");
+			$("#ApplicationEmpmainline_error").show();
+			$("#ApplicationEmpmainline").focus();
+		} else {
+			$("#ApplicationEmpmainline_error").hide();
+		}
+		if ($("#ApplicationEmpcontact").val() == '') {
+			++err_count_step4;
+			$("#ApplicationEmpcontact_error").html("Please enter employer contact name.");
+			$("#ApplicationEmpcontact_error").show();
+			$("#ApplicationEmpcontact").focus();
+		} else {
+			$("#ApplicationEmpcontact_error").hide();
+		}
+		if ($("#ApplicationEmptime").val() == '') {
+			++err_count_step4;
+			$("#ApplicationEmptime_error").html("Please enter current company time.");
+			$("#ApplicationEmptime_error").show();
+			$("#ApplicationEmptime").focus();
+		} else {
+			$("#ApplicationEmptime_error").hide();
+		}
+		if ($("#ApplicationPayDays").val() == '') {
+			++err_count_step4;
+			$("#ApplicationPayDays_error").html("Please enter pay days.");
+			$("#ApplicationPayDays_error").show();
+			$("#ApplicationPayDays").focus();
+		} else {
+			$("#ApplicationPayDays_error").hide();
+		}
+		if ($("#ApplicationHowPaid").val() == '') {
+			++err_count_step4;
+			$("#ApplicationHowPaid_error").html("Please select how are you paid.");
+			$("#ApplicationHowPaid_error").show();
+			$("#ApplicationHowPaid").focus();
+		} else {
+			$("#ApplicationHowPaid_error").hide();
+		}
+		if ($("#ApplicationLastPay").val() == '') {
+			++err_count_step4;
+			$("#ApplicationLastPay_error").html("Please enter last pay day.");
+			$("#ApplicationLastPay_error").show();
+			$("#ApplicationLastPay").focus();
+		} else {
+			$("#ApplicationLastPay_error").hide();
+		}
+		if ($("#ApplicationNextPay").val() == '') {
+			++err_count_step4;
+			$("#ApplicationNextPay_error").html("Please next pay day.");
+			$("#ApplicationNextPay_error").show();
+			$("#ApplicationNextPay").focus();
+		} else {
+			$("#ApplicationNextPay_error").hide();
+		}
+		
+		
+		if(err_count_step4 == 0) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
 	$("#step4,#step4skip").click(function(){
-		$("div.tab4").addClass("tab");
-		$("#emp_cont").slideUp("1000");
-		$("#finan_cont").slideDown("1000");
+		if($(this).step4()) {
+			$("div.tab4").addClass("tab");
+			$("#emp_cont").slideUp("1000");
+			$("#finan_cont").slideDown("1000");
+		}
 	});
 	$("#step5,#step5skip").click(function(){
 		$("div.tab5").addClass("tab");
@@ -429,6 +689,14 @@ $(document).ready(function(){
 		}
 	}
 	
+	$.fn.validate_email = function(email) {
+		var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+		if (reg.test(email)){
+			return true; 
+		} else {
+			return false;
+		}
+	}
 	
 	$("#ApplicationAdddetailsForm").submit(function(){
 		return $(this).laststep();
@@ -594,19 +862,19 @@ $(document).ready(function(){
 	
 	$(".addasset").live("click",function(){
 		var id = $(this).attr("id").split("_");
-		var str = '<input type="text" id="ApplicationAssetsline'+id[1]+'" class="assets1" name="data[Application][assetsline]['+id[1]+']">		<input type="text" id="ApplicationAssets'+id[1]+'" class="assets2" name="data[Application][assets]['+id[1]+']">';
+		var str = '<input type="text" id="ApplicationAssetsline'+id[1]+'" class="assets1" name="data[Application][assetsline]['+id[1]+']" placeholder="Home, Car, Jewelry, Furniture, etc.">		<input type="text" id="ApplicationAssets'+id[1]+'" class="assets2" name="data[Application][assets]['+id[1]+']">';
 		$("#assetscont").append(str);
 		$(this).attr("id","asset_"+(parseInt(id[1])+1));
 	});
 	$(".addliability").live("click",function(){
 		var id = $(this).attr("id").split("_");
-		var str = '<input type="text" id="ApplicationLiabilityline'+id[1]+'" class="assets1" name="data[Application][liabilityline]['+id[1]+']">		<input type="text" id="ApplicationLiabilities'+id[1]+'" class="assets2" name="data[Application][liabilities]['+id[1]+']">';
+		var str = '<input type="text" id="ApplicationLiabilityline'+id[1]+'" class="assets1" name="data[Application][liabilityline]['+id[1]+']" placeholder="Payday loans, Visa, Mastercard, Auto Loan, etc.">		<input type="text" id="ApplicationLiabilities'+id[1]+'" class="assets2" name="data[Application][liabilities]['+id[1]+']">';
 		$("#liabilitiescont").append(str);
 		$(this).attr("id","liability_"+(parseInt(id[1])+1));
 	});
 	$(".addexpense").live("click",function(){
 		var id = $(this).attr("id").split("_");
-		var str = '<input type="text" id="ApplicationExpenselist'+id[1]+'" class="assets1" name="data[Application][expenselist]['+id[1]+']">		<input type="text" id="ApplicationExpenses'+id[1]+'" class="assets2" name="data[Application][expenses]['+id[1]+']">';
+		var str = '<input type="text" id="ApplicationExpenselist'+id[1]+'" class="assets1" name="data[Application][expenselist]['+id[1]+']" placeholder="Rent, Transportation, Gas, Insurance, Cell phone, etc.">		<input type="text" id="ApplicationExpenses'+id[1]+'" class="assets2" name="data[Application][expenses]['+id[1]+']">';
 		$("#expensescont").append(str);
 		$(this).attr("id","addexpense_"+(parseInt(id[1])+1));
 	});

@@ -93,3 +93,5 @@ div.back{background-color: #000000;
     top: 0;
     width: 100%;
     z-index: 2147483647;}
+	
+label.address_separator{float: left; font-size: 14px; font-weight: bold;  margin: 0 0 11px;  width: 100%;}
