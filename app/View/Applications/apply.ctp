@@ -33,6 +33,10 @@ $( "#ApplicationAmount" ).val( $( "#slider-range-min" ).slider( "value" ) );
 	<?php echo $this->Form->end(); ?>
 <?php } else { ?>
 <?php echo $this->Session->flash(); ?>
+<div class="back hide">
+	<?php echo $this->Html->image('AjaxLoader3.gif'); ?>
+	<label>Processing, Please Wait...</label>
+</div>
 <div id="qualify" class="tab">Qualify</div>
 <div id="qualify_cont" class="info">
 	<h2>We have some basic requirements in order to pre-qualify for a loan, please answer the following several questions so we can determine if our product is the right fit for you:</h2>

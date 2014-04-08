@@ -85,13 +85,26 @@ div.message{ background-color: #EDDCDA;
     padding: 10px;
     width: 100%;}
 div.back{background-color: #000000;
-    display: inline-block;
-    height: 488%;
+    height: 1710px;
     left: 0;
-    opacity: 0.46;
+    opacity: 0.80;
     position: absolute;
     top: 0;
     width: 100%;
     z-index: 2147483647;}
+div.back img{left: 49%; position: fixed; top: 40%;}
+div.back label{color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    left: 43%;
+    position: fixed;
+    top: 58%;}
 	
 label.address_separator{float: left; font-size: 14px; font-weight: bold;  margin: 0 0 11px;  width: 100%;}
+label.head_label{float: left; width: 100%; font-weight: bold; font-size: 16px;margin: 20px 0 8px;}
+label.content_label{float: left; width: 100%; margin: 4px 0px 0px; line-height: 15px;}
+label.margin_null{margin:0 0 10px 0 !important;}
+form#ApplicationDocumentAddDocumentsForm label{float:left;width:100%;font-weight:bold;font-size:16px !important; margin:10px 0 !important;}
+form#ApplicationDocumentAddDocumentsForm span{float: left; font-size: 12px; margin: 6px 0 0; width: 100%;text-align:justify;line-height:15px;}
+form#ApplicationDocumentAddDocumentsForm span b{font-weight:bold;}
+#frmsbmt{margin-top:40px;}

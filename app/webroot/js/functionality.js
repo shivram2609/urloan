@@ -273,7 +273,12 @@ $(document).ready(function(){
 		if($("#ApplicationApply").val()) {
 			return true;
 		} else {
-			return ($(this).step0());
+			if($(this).step0()) {
+				$(".back").show();
+				setTimeout(function(){ alert(true); return true; },10000);
+			} else {
+				return false;
+			}
 		}
 		
 	});
