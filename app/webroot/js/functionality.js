@@ -830,35 +830,85 @@ $(document).ready(function(){
 	
 	$("#ApplicationDocumentAddDocumentsForm").validate({
 		rules:{
-			'data[filename][0]' : {
-				required 	:	false,
+			'data[ApplicationDocument][filename0]' : {
+				required 	:	true,
 				accept		:	'jpeg|jpg|png|gif|pdf|doc'
 			},
-			'data[filename][1]' : {
-				required 	:	false,
+			'data[ApplicationDocument][filename1]' : {
+				required 	:	true,
 				accept		:	'jpeg|jpg|png|gif|pdf|doc'
 			},
-			'data[filename][2]' : {
-				required 	:	false,
+			'data[ApplicationDocument][filename2]' : {
+				required 	:	true,
 				accept		:	'jpeg|jpg|png|gif|pdf|doc'
 			},
-			'data[filename][3]' : {
+			'data[ApplicationDocument][filename3]' : {
+				required 	:	true,
+				accept		:	'jpeg|jpg|png|gif|pdf|doc'
+			},
+			'data[ApplicationDocument][filename4]' : {
 				required 	:	false,
 				accept		:	'jpeg|jpg|png|gif|pdf|doc'
 			}
 			
 		},
 		messages:{
-			'data[filename][0]' : {
+			'data[ApplicationDocument][filename0]' : {
+				required    :   'Please enter Proof of income.',
 				accept		:	'Please upload jpeg,gif,png,pdf or doc file only'
 			},
-			'data[filename][1]' : {
+			'data[ApplicationDocument][filename1]' : {
+				required    :   'Please enter Proof of residence.',
 				accept		:	'Please upload jpeg,gif,png,pdf or doc file only'
 			},
-			'data[filename][2]' : {
+			'data[ApplicationDocument][filename2]' : {
+				required    :   'Please enter Government issued photo ID.',
 				accept		:	'Please upload jpeg,gif,png,pdf or doc file only'
 			},
-			'data[filename][3]' : {
+			'data[ApplicationDocument][filename3]' : {
+				required    :   'Please enter Bank Statement.',
+				accept		:	'Please upload jpeg,gif,png,pdf or doc file only'
+			},
+			'data[ApplicationDocument][filename4]' : {
+				accept		:	'Please upload jpeg,gif,png,pdf or doc file only'
+			}
+			
+		}
+	});
+	$("#ApplicationDocumentEditDocumentsForm").validate({
+		rules:{
+			'data[ApplicationDocument][filename0]' : {
+				required 	:	false,
+				accept		:	'jpeg|jpg|png|gif|pdf|doc'
+			},
+			'data[ApplicationDocument][filename1]' : {
+				required 	:	false,
+				accept		:	'jpeg|jpg|png|gif|pdf|doc'
+			},
+			'data[ApplicationDocument][filename2]' : {
+				required 	:	false,
+				accept		:	'jpeg|jpg|png|gif|pdf|doc'
+			},
+			'data[ApplicationDocument][filename3]' : {
+				required 	:	false,
+				accept		:	'jpeg|jpg|png|gif|pdf|doc'
+			}
+			
+		},
+		messages:{
+			'data[ApplicationDocument][filename0]' : {
+				required    :   'Please enter Proof of income.',
+				accept		:	'Please upload jpeg,gif,png,pdf or doc file only'
+			},
+			'data[ApplicationDocument][filename1]' : {
+				required    :   'Please enter Proof of residence.',
+				accept		:	'Please upload jpeg,gif,png,pdf or doc file only'
+			},
+			'data[ApplicationDocument][filename2]' : {
+				required    :   'Please enter Government issued photo ID.',
+				accept		:	'Please upload jpeg,gif,png,pdf or doc file only'
+			},
+			'data[ApplicationDocument][filename3]' : {
 				accept		:	'Please upload jpeg,gif,png,pdf or doc file only'
 			}
 			

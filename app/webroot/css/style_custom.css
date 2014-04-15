@@ -26,7 +26,7 @@ font-size: 15px;
     width: 25%;
 }
 .progress-bar ul li span{
-   background:#F6F2EF;
+   background:#FFFFFF;
     border: 1px solid #CCCCCC;
     border-radius: 50%;
     display: block;
@@ -37,6 +37,8 @@ font-size: 15px;
     text-align: center;
     width: 50px;
 }
+
+.progress-bar ul li span img{width: 30px; height: 30px; margin: 8px 0px 0px 3px;}
 .progress-bar ul li.active{
     float: left;
     list-style: none outside none;
@@ -107,4 +109,13 @@ label.margin_null{margin:0 0 10px 0 !important;}
 form#ApplicationDocumentAddDocumentsForm label{float:left;width:100%;font-weight:bold;font-size:16px !important; margin:10px 0 !important;}
 form#ApplicationDocumentAddDocumentsForm span{float: left; font-size: 12px; margin: 6px 0 0; width: 100%;text-align:justify;line-height:15px;}
 form#ApplicationDocumentAddDocumentsForm span b{font-weight:bold;}
+form#ApplicationDocumentEditDocumentsForm label{float:left;width:100%;font-weight:bold;font-size:16px !important; margin:10px 0 !important;}
+form#ApplicationDocumentEditDocumentsForm span{float: left; font-size: 12px; margin: 6px 0 0; width: 100%;text-align:justify;line-height:15px;}
+form#ApplicationDocumentEditDocumentsForm span b{font-weight:bold;}
 #frmsbmt{margin-top:40px;}
+div#slider-range-min{left: 10px;
+    position: relative !important;
+    top: 42px !important;
+    width: 48% !important;}
+form#ApplicationApplyForm .number{float: left;
+    width: 50%;}

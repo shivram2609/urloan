@@ -10,7 +10,7 @@ class AppController extends Controller {
 						'logoutRedirect'=>array('controller'=>'users','action'=>'login'),
 						'loginRedirect'=>array('controller'=>'users','action'=>'profile')
 					  ));
-	
+	var $helpers = array("Html","Session");
 	public $from_mail    = 'shivamsharma586@gmail.com';
 	public $subject_mail = 'test';
 	public $message      = 'test';
@@ -38,5 +38,17 @@ class AppController extends Controller {
 		$this->from_mail = $maildata['Cmsemail']['from_mail'];
 		$this->subject_mail = $maildata['Cmsemail']['subject_mail'];
 		$this->message = $maildata['Cmsemail']['message'];
+	}
+	
+	function checkapplication() {
+		$this->loadModel("Application");
+		$this->Application->recursive = -1;
+		$app = $this->Application->find("first",array("conditions"=>array("Application.appstatus = 'Incomplete' OR Application.appstatus = 'In Process'")));
+		if(!empty($app)) {
+			$this->Session->setFlash("You are already having an Application with ".$app['Application']['appstatus']." Status, So you can not apply for another loan application for now.");
+			if($this->params['controller'] == 'applications' && $this->params['action'] != 'index') {
+				$this->redirect("/myapplications");
+			}
+		}
 	}
 }

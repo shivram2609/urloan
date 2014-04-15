@@ -13,7 +13,7 @@ class ApplicationsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','LenDesk');
 	
 	function beforeFilter() {
 		$this->layout = "default";
@@ -22,6 +22,7 @@ class ApplicationsController extends AppController {
 	}
 	
 	function apply() {
+		$this->checkapplication();
 		$this->loadModel("Userdetail");
 		$data_arr = array();
 		$data_arr = $this->Userdetail->find("first",array("conditions"=>array("Userdetail.user_id"=>$this->Session->read("Auth.User.id"))));
@@ -146,24 +147,36 @@ class ApplicationsController extends AppController {
 	}
 	
 	function addDocuments($applicationid = null) {
+		$this->loadModel("ApplicationDocument");
 		if (!empty($applicationid)) {
-			
+			$app = $this->ApplicationDocument->find("all",array("conditions"=>array("ApplicationDocument.application_id"=>$applicationid)));
 		}
-		if($this->request->is('post')){
-			$this->loadModel("ApplicationDocument");
+		if(isset($this->data) && !empty($this->data)){
 			$flag = false;
-			foreach($this->data['filename'] as $key=>$val) {
-				$uploadarr = array();
+			$app = $this->ApplicationDocument->find("all",array("conditions"=>array("ApplicationDocument.application_id"=>$applicationid)));
+			$i = 0;
+			$uploadarr = array();
+			foreach($this->data['ApplicationDocument'] as $key=>$val) {
+				$filename = "filename".$i++;
 				if(!empty($val['name'])) {
+					//echo $val[$filename]['name'];
 					$newname = strtotime(date("y-m-d h:i:s")).$this->Session->read("Auth.User.id").$val['name'];
 					if (move_uploaded_file($val['tmp_name'],WWW_ROOT."files/appfiles/".$newname)) {
-						$uploadarr['ApplicationDocument'] = array("application_id"=>$applicationid,"filename"=>$val['name'],"file_path"=>WWW_ROOT."files/appfiles/".$newname);
-						$this->ApplicationDocument->create();
-						$this->ApplicationDocument->save($uploadarr);
+						$uploadarr['ApplicationDocument'][$filename] = $val['name'];
+						$uploadarr['ApplicationDocument'][$filename."_path"] = WWW_ROOT."files/appfiles/".$newname;
 						$flag = true;
 					}
 				}
 			}
+			$this->ApplicationDocument->create();
+			if(!empty($app)) {
+				$this->ApplicationDocument->id = $app[0]['ApplicationDocument']['id'];
+			}
+			if(!empty($uploadarr)) {
+				$uploadarr['ApplicationDocument']['application_id'] = $applicationid;
+				$this->ApplicationDocument->save($uploadarr);
+			}
+			
 			if ($flag) {
 				$app['Application']['appstatus'] = 'In Process';
 				$app['Application']['app_step'] = 4;
@@ -172,6 +185,9 @@ class ApplicationsController extends AppController {
 				$this->Application->save($app);
 			}
 			$this->redirect("/confirmation/".$applicationid);
+		}
+		if(!empty($app)) {
+			$this->data = $app[0];
 		}
 		$this->set(compact("applicationid"));
 	}

@@ -1,6 +1,7 @@
 <?php echo $this->element("left_navigation"); ?>
 <section class="right-panel">
 <h1>My Applications</h1>
+<?php echo $this->Session->flash(); ?>
 	<div class="applications index" style="width:99%;">
 	<table cellpadding="0" cellspacing="0">
 	<tr>
@@ -31,11 +32,10 @@
 				}
 			?>
 				<?php echo $this->Html->link(__('Complete It'), array('controller' => $controller,"action"=>$application['Application']['id'])); ?>
+			<?php } else { ?>
+				<?php echo $this->Html->link(__('View Uploaded Documents'), array('controller' => "addfiles","action"=>$application['Application']['id'])); ?>
 			<?php } ?>
-			<?php if($application['Application']['appstatus'] == 'Incomplete' || $application['Application']['appstatus'] == 'In Process') { ?>
-			-NA-
-				<?php //echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $application['Application']['id']), null, __('Are you sure you want to delete # %s?', $application['Application']['id'])); ?>
-			<?php } ?>
+			
 		</td>
 	</tr>
 <?php endforeach; ?>

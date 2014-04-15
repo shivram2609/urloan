@@ -24,12 +24,12 @@ $( "#ApplicationAmount" ).val( $( "#slider-range-min" ).slider( "value" ) );
 <?php } ?>
 <?php echo $this->element("left_navigation"); ?>
 <section class="right-panel">
-<h1>Apply Online Now</h1>
+<h1>Start Application Online Now</h1>
 <?php echo $this->Form->create("Application"); ?>
 <?php if($this->Session->read("raw")) { ?>
 <?php echo $this->Session->flash(); ?>
 	<?php echo $this->Form->hidden("apply",array("value"=>"app")); ?>
-	<?php echo $this->Form->submit("Apply Now"); ?>
+	<?php echo $this->Form->submit("Start Now"); ?>
 	<?php echo $this->Form->end(); ?>
 <?php } else { ?>
 <?php echo $this->Session->flash(); ?>
@@ -37,10 +37,10 @@ $( "#ApplicationAmount" ).val( $( "#slider-range-min" ).slider( "value" ) );
 	<?php echo $this->Html->image('AjaxLoader3.gif'); ?>
 	<label>Processing, Please Wait...</label>
 </div>
-<div id="qualify" class="tab">Qualify</div>
+<div id="qualify" class="tab">Start</div>
 <div id="qualify_cont" class="info">
 	<h2>We have some basic requirements in order to pre-qualify for a loan, please answer the following several questions so we can determine if our product is the right fit for you:</h2>
-	<p style="font-size: 12px;">Fields denoted with <em style="color:red;">*</em> sign are mandatory.</p>
+	
 	<?php 
 	echo $this->Form->input("Userdetail.province_id",array("options"=>$provinces,"empty"=>"Please select province","class"=>"validate"));
 	echo $this->Form->input('Userdetail.birth_date',array("type"=>"text",'readonly'));
@@ -57,6 +57,7 @@ $( "#ApplicationAmount" ).val( $( "#slider-range-min" ).slider( "value" ) );
 </label>
 	<?php echo $this->Form->radio("bankcrupt_status",array("1"=>"Yes","2"=>"No"),array("legend"=>false)); ?>
 </div>
+<p style="font-size: 12px;"><strong style="font-weight:bold;">Note : </strong>Fields denoted with <em style="color:red;">*</em> are mandatory.</p>
 	<?php echo $this->Form->submit("Get Prequalified"); ?>
 	<?php echo $this->Form->end(); ?>
 </div>

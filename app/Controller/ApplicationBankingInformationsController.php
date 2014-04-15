@@ -13,7 +13,7 @@ class ApplicationBankingInformationsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','LenDesk');
 
 /**
  * index method
@@ -46,7 +46,7 @@ class ApplicationBankingInformationsController extends AppController {
  * @return void
  */
 	public function add($id=NULL) {
-	$this->layout ="default";
+		$this->layout ="default";
 		if (isset($this->data) && !empty($this->request->data)) {
 			$this->ApplicationBankingInformation->create();
 			$data = $this->request->data;
@@ -55,6 +55,14 @@ class ApplicationBankingInformationsController extends AppController {
 			//die;
 			if ($this->ApplicationBankingInformation->save($data)) {
 				$this->Session->setFlash(__('The application banking information has been saved.'));
+				$data = $this->ApplicationBankingInformation->getappinfo($id);
+				if(!empty($data)) {
+					$response = $this->LenDesk->createNewLead($data);
+					$response = (array) json_decode($response);
+					if ( isset($response['response']->uuid) && !empty($response['response']->uuid) ) {
+						$app['Application']['uuid'] = $response['response']->uuid;
+					}
+				}
 				$this->loadModel("Application");
 				$this->Application->create();
 				$this->Application->id = $id;

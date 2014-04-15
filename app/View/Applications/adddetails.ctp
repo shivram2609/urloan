@@ -9,8 +9,8 @@ changeYear: true,yearRange: '1950:2014'});
 <?php echo $this->Element("progress",array("step"=>2)); ?>
 <?php echo $this->element("left_navigation"); ?>
 <section class="right-panel">
-<h1>Evaluate</h1>
-<p style="font-size: 12px;">Fields denoted with <em style="color:red;">*</em> sign are mandatory.</p>
+<h1>Apply</h1>
+<p style="font-size: 12px;"><strong style="font-weight:bold;">Note : </strong>Fields denoted with <em style="color:red;">*</em> are mandatory.</p>
 <?php echo $this->Form->create("Application"); ?>
 <div id="pers" class="tab0">Personal Details</div>
 <div id="pers_cont" class="info">
@@ -137,6 +137,6 @@ changeYear: true,yearRange: '1950:2014'});
 		<?php echo $this->Form->input("term2",array("type"=>"checkbox","id"=>"term2","label"=>false,"div"=>false)); ?><label for="term2">I have read the Privacy Policy. Also, By checking this box next I authorize Creditloans Canada Financing Inc. or any agent we assign the contract to, to obtain a credit bureau report containing credit information or personal information about you. You authorize us to obtain information about you from third parties including employers and landlords and verify information with them. Creditloans Canada Financing Inc. may disclose to other credit grantors or to credit bureau agencies the information we obtain as a result of your credit approval process.</label><br/>
 		<label id="term2_error" class="error hide"></label>
 	</div>
-<?php echo $this->Form->submit("Complete Step"); ?>
+<?php echo $this->Form->submit("Submit Application"); ?>
 <?php echo $this->Form->end(); ?>
 </section>
