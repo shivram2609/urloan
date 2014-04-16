@@ -45,7 +45,7 @@ class AppController extends Controller {
 		$this->Application->recursive = -1;
 		$app = $this->Application->find("first",array("conditions"=>array("Application.appstatus = 'Incomplete' OR Application.appstatus = 'In Process'")));
 		if(!empty($app)) {
-			$this->Session->setFlash("You are already having an Application with ".$app['Application']['appstatus']." Status, So you can not apply for another loan application for now.");
+			$this->Session->setFlash("You may only have one active application, So you can not apply for another loan application for now.");
 			if($this->params['controller'] == 'applications' && $this->params['action'] != 'index') {
 				$this->redirect("/myapplications");
 			}

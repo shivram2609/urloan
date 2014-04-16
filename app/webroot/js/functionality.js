@@ -9,7 +9,7 @@ $(document).ready(function(){
 			$(this).removeAttr("required");
 		}
 	});
-	$("#ApplicationApplyForm,#ApplicationAdddetailsForm,#ApplicationBankingInformationAddForm").find("input,select,checkbox").each(function(){
+	$("#ApplicationApplyForm,#ApplicationAdddetailsForm,#ApplicationBankingInformationAddForm,#ApplicationDocumentEditDocumentsForm,#ApplicationDocumentAddDocumentsForm").find("input,select,checkbox").each(function(){
 		if($(this).hasClass("validate")){
 			$(this).prev("label").html($(this).prev("label").html() + "<em style='color:red;'>*<em>");
 			$(this).after('<label id = "'+$(this).attr("id")+'_error" class="hide error"></label>');
@@ -539,7 +539,7 @@ $(document).ready(function(){
 		} else {
 			$("#ApplicationEmpStatus_error").hide();
 		}
-		if ($("#ApplicationCurrCompTime").val() == '') {
+		/*if ($("#ApplicationCurrCompTime").val() == '') {
 			++err_count_step4;
 			$("#ApplicationCurrCompTime_error").html("Please enter current company time.");
 			$("#ApplicationCurrCompTime_error").show();
@@ -551,7 +551,7 @@ $(document).ready(function(){
 			$("#ApplicationCurrCompTime_error").focus();
 		} else {
 			$("#ApplicationEmpStatus_error").hide();
-		}
+		}*/
 		if ($("#ApplicationCompany").val() == '') {
 			++err_count_step4;
 			$("#ApplicationCompany_error").html("Please enter company.");
@@ -828,7 +828,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$("#ApplicationDocumentAddDocumentsForm").validate({
+	$("#ApplicationDocumentAddDocumentsForm,#ApplicationDocumentEditDocumentsForm").validate({
 		rules:{
 			'data[ApplicationDocument][filename0]' : {
 				required 	:	true,
@@ -875,7 +875,7 @@ $(document).ready(function(){
 			
 		}
 	});
-	$("#ApplicationDocumentEditDocumentsForm").validate({
+	$("#ApplicationDocumentEditDocumentsFormsss").validate({
 		rules:{
 			'data[ApplicationDocument][filename0]' : {
 				required 	:	false,

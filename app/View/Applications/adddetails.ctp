@@ -85,7 +85,7 @@ changeYear: true,yearRange: '1950:2014'});
 <div id="emp" class="tab3">Your employment details</div>
 	<div id="emp_cont" class="info hide">
 		<?php echo $this->Form->input("empstatus",array("options"=>array("Full-Time employed"=>"Full-Time employed","Part-time employed"=>"Part-time employed","Temporary employment"=>"Temporary employment","Self employed"=>"Self employed","Unemployed"=>"Unemployed","Student"=>"Student","Home maker"=>"Home maker","Pension"=>"Pension","Disability benefit"=>"Disability benefit"),"empty"=>"Select Employee Status","label"=>"Employee Status","class"=>"validate")); ?>
-		<?php echo $this->Form->input("curr_comp_time",array("type"=>"text","label"=>"Time at Current Employer (Months)","class"=>"validate")); ?>
+		<?php //echo $this->Form->input("curr_comp_time",array("type"=>"text","label"=>"Time at Current Employer (Months)","class"=>"validate")); ?>
 		<?php echo $this->Form->input("company",array("type"=>"text","class"=>"validate")); ?>
 		<?php echo $this->Form->input("pay",array("type"=>"text","class"=>"validate","label"=>"Net Monthly Pay")); ?>
 		<?php echo $this->Form->input("position",array("type"=>"text","class"=>"validate")); ?>
@@ -130,11 +130,11 @@ changeYear: true,yearRange: '1950:2014'});
 	</div>
 <div id="terms" class="tab5">Acceptance of Terms</div>
 	<div id="terms_cont" class="info hide">
-		<?php echo $this->Form->input("term1",array("type"=>"checkbox","id"=>"term1","label"=>false,"div"=>false)); ?><label for="term1">By ticking here you consent to us contacting you by regular mail, e-mail, telephone, and automated message and/or passing your application to trusted third parties as described in our Privacy Policy.</label><br/>
+		<?php echo $this->Form->input("term1",array("type"=>"checkbox","id"=>"term1","label"=>false,"div"=>false)); ?><label for="term1">By ticking here you consent to us contacting you by regular mail, e-mail, telephone, and automated message and/or passing your application to trusted third parties as described in our <a href='http://www.urloan.com/privacy-policy/' target="_blank" style="color: #003D4C;font-weight: bold;" >Privacy Policy</a>.</label><br/>
 		<label id="term1_error" class="error hide"></label>
 		<br/><hr/><br/><br/>
-		<label>Please read our Privacy Policy. We regret we cannot approve your personal loan until you check the box to confirm you have read this document. *</label><br/><br/>
-		<?php echo $this->Form->input("term2",array("type"=>"checkbox","id"=>"term2","label"=>false,"div"=>false)); ?><label for="term2">I have read the Privacy Policy. Also, By checking this box next I authorize Creditloans Canada Financing Inc. or any agent we assign the contract to, to obtain a credit bureau report containing credit information or personal information about you. You authorize us to obtain information about you from third parties including employers and landlords and verify information with them. Creditloans Canada Financing Inc. may disclose to other credit grantors or to credit bureau agencies the information we obtain as a result of your credit approval process.</label><br/>
+		<label>Please read our <a href='http://www.urloan.com/privacy-policy/' target="_blank" style="color: #003D4C;font-weight: bold;" >Privacy Policy</a>. We regret we cannot approve your personal loan until you check the box to confirm you have read this document. *</label><br/><br/>
+		<?php echo $this->Form->input("term2",array("type"=>"checkbox","id"=>"term2","label"=>false,"div"=>false)); ?><label for="term2">I have read the <a href='http://www.urloan.com/privacy-policy/' target="_blank" style="color: #003D4C;font-weight: bold;" >Privacy Policy</a>. Also, By checking this box next I authorize Creditloans Canada Financing Inc. or any agent we assign the contract to, to obtain a credit bureau report containing credit information or personal information about you. You authorize us to obtain information about you from third parties including employers and landlords and verify information with them. Creditloans Canada Financing Inc. may disclose to other credit grantors or to credit bureau agencies the information we obtain as a result of your credit approval process.</label><br/>
 		<label id="term2_error" class="error hide"></label>
 	</div>
 <?php echo $this->Form->submit("Submit Application"); ?>

@@ -14,18 +14,18 @@
 	 ?>
 	
 	<?php
-	echo $this->Form->input("filename0",array("type"=>"file","div"=>false,"label"=>"Proof of income")); ?>
+	echo $this->Form->input("filename0",array("type"=>"file","div"=>false,"label"=>"Proof of income","class"=>"validate")); ?>
 	<span><b>Tip:</b> (i.e. your most recent pay stub, recent signed letter from your employer on letterhead and should have contact details, etc.)</span>
 	<?php
-	echo $this->Form->input("filename1",array("type"=>"file","div"=>false,"label"=>"Proof of residence"));
+	echo $this->Form->input("filename1",array("type"=>"file","div"=>false,"label"=>"Proof of residence","class"=>"validate"));
 	?>
 	<span><b>Tip:</b> Your signed lease agreement is preferred.  Your most recent utility bill or cell phone bill showing your current physical address is also acceptable.</span>
 	<?php
-	echo $this->Form->input("filename2",array("type"=>"file","div"=>false,"label"=>"Government issued photo ID"));
+	echo $this->Form->input("filename2",array("type"=>"file","div"=>false,"label"=>"Government issued photo ID","class"=>"validate"));
 	?>
 	<span><b>Tip:</b> A driver's license or passport is acceptable. Please caution: we require your primary ID in color, acceptable methods include smartphone photo or color scan.  A second piece of ID may be required as your application progresses.</span>
 	<?php
-	echo $this->Form->input("filename3",array("type"=>"file","div"=>false,"label"=>"Bank Statements"));
+	echo $this->Form->input("filename3",array("type"=>"file","div"=>false,"label"=>"Bank Statements","class"=>"validate"));
 	?>
 	<span><b>Tip:</b> Please attach your most recent 90 days of bank statements to the date of your application.  We require the actual physical statements you receive by mail or downloadable online through your online banking.  If you cannot obtain these, we encourage you to perform instant banking verification for faster processing.  Please phone 1-855-723-5626 ext. 1 to make the necessary arrangements.</span>
 	<label>Required Disclosure Waiver (<a href="http://www.urloan.com/wp-content/uploads/2013/12/Initial-Application-Checklist-and-Disclosure-Consent-Dec-2013.pdf" target="_blank">Click Here to Download the Initial Application Checklist and Disclosure Consent</a>)</label>
